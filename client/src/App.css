@@ -1,0 +1,791 @@
+/* barbers-dev-panel/src/App.css */
+
+/* Overall App Layout */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-body);
+}
+
+/* Header */
+.app-header {
+  background: linear-gradient(to right, var(--color-brand-primary), var(--color-brand-secondary));
+  color: var(--color-text-white);
+  padding: var(--spacing-md) 0;
+  box-shadow: var(--shadow-lg);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .header-content {
+    flex-direction: row;
+    gap: var(--spacing-xl);
+  }
+}
+
+.header-title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-bold);
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin: 0;
+}
+
+.header-nav {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.nav-button {
+  background-color: transparent;
+  color: var(--color-text-white);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-medium);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.nav-button:hover {
+  background-color: var(--color-brand-secondary);
+  border-color: var(--color-brand-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-button.active {
+  background-color: var(--color-bg-card);
+  color: var(--color-brand-primary);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-bg-card);
+  transform: translateY(0);
+}
+
+/* Main Content Area */
+.main-content {
+  flex-grow: 1;
+  padding: var(--spacing-2xl) 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.main-content-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+/* In App.css or a dedicated modal.css file */
+
+.modal-overlay {
+  position: fixed; /* Fixes it to the viewport */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  z-index: 1000; /* Ensures it's on top of other content */
+}
+
+.modal-content {
+  background-color: var(--color-bg-card); /* Use your card background color */
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  position: relative; /* Needed for z-index or other positioning within the modal */
+  max-width: 90%; /* Adjust as needed */
+  max-height: 90%; /* Adjust as needed */
+  overflow-y: auto; /* Add scroll for long content */
+  z-index: 1001; /* Ensure content is above overlay if needed for specific cases */
+}
+
+/* Optional: Add a transition for a smoother appearance */
+.modal-overlay {
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/* Section Card */
+.section-card {
+  background-color: var(--color-bg-card);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  margin-bottom: var(--spacing-2xl);
+  border: 1px solid var(--border-color);
+}
+
+.section-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-brand-primary);
+  border-bottom: 1px solid var(--color-gray-200);
+  padding-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/* Filter Section */
+.filter-section {
+  background-color: var(--color-bg-filter);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-xl);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  align-items: flex-end;
+  border: 1.5px solid var(--border-color); /* Slightly thicker border */
+}
+
+.filter-group {
+  flex: 1;
+  min-width: 200px; /* Adjusted min-width for better mobile layout */
+}
+
+/* Info Cards (Owner Cards, Dashboard Summary Cards) */
+.info-card {
+  background-color: var(--color-bg-card);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--spacing-sm); /* Gap between header and details */
+}
+
+.info-card.clickable:hover {
+  transform: translateY(-3px); /* More pronounced lift */
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+}
+
+.info-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm); /* Space between header and details */
+}
+
+.info-card-name {
+  font-weight: var(--font-semibold);
+  font-size: var(--font-size-lg);
+  color: var(--color-text-default);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.info-card-details p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+.info-card-details p:last-child {
+  margin-bottom: 0;
+}
+
+/* Specific Card Colors for Owner List */
+.owner-card.fully-subscribed { background-color: #D1FAE5; border-color: var(--color-success); } /* Light Green */
+.owner-card.partially-subscribed { background-color: #FEF3C7; border-color: var(--color-warning); } /* Light Orange */
+.owner-card.unsubscribed { background-color: #FEE2E2; border-color: var(--color-danger); } /* Light Red */
+.owner-card.trial { background-color: #DBEAFE; border-color: var(--color-info); } /* Light Blue for trial owners */
+
+
+/* Dashboard Summary Cards */
+.summary-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Responsive grid */
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.summary-card {
+    background-color: var(--color-bg-card);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+}
+
+.summary-card-icon {
+    background-color: var(--color-brand-primary);
+    color: var(--color-text-white);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.summary-card-title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text-light);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.summary-card-value {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-bold);
+    color: var(--color-text-default);
+    margin: 0;
+    line-height: 1;
+}
+
+/* Specific Summary Card Colors */
+.summary-card.total-shops .summary-card-icon { background-color: var(--color-info); }
+.summary-card.active-subscriptions .summary-card-icon { background-color: var(--color-success); }
+.summary-card.total-income .summary-card-icon { background-color: var(--color-brand-primary); }
+.summary-card.expired-shops .summary-card-icon { background-color: var(--color-danger); }
+.summary-card.owners .summary-card-icon { background-color: var(--color-brand-secondary); }
+.summary-card.users .summary-card-icon { background-color: var(--color-gray-600); }
+
+
+/* Shop Card Nested within Owner Detail */
+.shop-card-nested {
+    background-color: var(--color-gray-50);
+    border: 1px solid var(--color-gray-200);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-md);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.shop-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px dashed var(--color-gray-200);
+    margin-bottom: var(--spacing-md);
+}
+
+.shop-card-title {
+    font-weight: var(--font-semibold);
+    font-size: var(--font-size-lg);
+    color: var(--color-brand-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.shop-details-item {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-xs);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    line-height: 1.4; /* Ensure consistent line height */
+}
+.shop-details-item svg {
+    flex-shrink: 0;
+    margin-top: 0.1rem; /* Adjust icon alignment */
+}
+
+/* Expand/Collapse Button for Shops (old, now removed from HTML) */
+.expand-button {
+    background: none;
+    border: none;
+    color: var(--color-brand-primary);
+    cursor: pointer;
+    font-size: var(--font-size-xl);
+    transition: transform 0.2s ease-in-out;
+    padding: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    width: 32px;
+    height: 32px;
+}
+
+.expand-button:hover {
+    background-color: rgba(90, 45, 130, 0.08);
+}
+
+.expand-button.expanded {
+    transform: rotate(90deg);
+}
+
+/* Subscription Status Tags */
+.status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    text-align: center;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.08);
+}
+
+.status-active { background-color: var(--color-success); color: var(--color-text-white); }
+.status-trial { background-color: var(--color-warning); color: var(--color-gray-900); }
+.status-expired { background-color: var(--color-danger); color: var(--color-text-white); }
+
+/* Table Styles */
+.data-table-container {
+    overflow-x: auto; /* Allows horizontal scrolling for large tables */
+    width: 100%; /* Take full width of its parent column */
+    margin-top: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.data-table {
+    width: 100%; /* Table itself takes 100% of the container */
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: var(--font-size-base);
+    min-width: 600px; /* Ensures columns don't get too narrow, triggers overflow-x */
+}
+
+.data-table th, .data-table td {
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: left;
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.data-table th {
+    background-color: var(--color-gray-100);
+    font-weight: var(--font-semibold);
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.05em;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.data-table thead tr:first-child th:first-child { border-top-left-radius: var(--radius-md); }
+.data-table thead tr:first-child th:last-child { border-top-right-radius: var(--radius-md); }
+
+.data-table tbody tr:hover {
+    background-color: var(--color-gray-50);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* User Table specific */
+.user-table-row {
+    cursor: pointer;
+}
+.user-table-row:hover {
+    background-color: var(--color-gray-50);
+}
+
+
+/* Footer */
+.app-footer {
+  background-color: var(--color-bg-footer);
+  color: var(--color-text-white);
+  padding: var(--spacing-md);
+  text-align: center;
+  font-size: var(--font-size-sm);
+  margin-top: auto;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.footer-link {
+    color: var(--color-gray-400);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    transition: color 0.2s ease-in-out;
+}
+.footer-link:hover {
+    color: var(--color-text-white);
+    text-decoration: underline;
+}
+
+
+/* Loading and Error Messages */
+.loading-message, .error-message {
+    text-align: center;
+    padding: var(--spacing-2xl);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-medium);
+    color: var(--color-gray-600);
+}
+.error-message { color: var(--color-danger); }
+
+/* Back Button */
+.back-button {
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Detail View Specific */
+.detail-card-section {
+    margin-bottom: var(--spacing-xl);
+}
+.detail-card-section-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-semibold);
+    color: var(--color-brand-primary);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-gray-200);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.detail-item {
+    font-size: var(--font-size-base);
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-xs);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+}
+.detail-item svg {
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+}
+
+.detail-item .status-tag {
+    margin-left: 0;
+}
+
+/* Static Content Pages */
+.static-content h3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-semibold);
+    color: var(--color-brand-secondary);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+}
+
+.static-content p {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-light);
+    font-size: var(--font-size-base);
+}
+
+.static-content ul {
+    list-style-type: disc;
+    padding-left: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+}
+
+.static-content li {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-light);
+    font-size: var(--font-size-base);
+}
+
+/* Owner Detail View - Shops & Barbers Layout */
+.owner-detail-content-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to single column for mobile */
+    gap: var(--spacing-xl); /* Gap between shop info and barber section */
+}
+
+@media (min-width: 768px) { /* Tablet and Desktop */
+    .owner-detail-content-grid {
+        grid-template-columns: 30% 70%; /* Shop details on left, barbers on right */
+    }
+}
+
+/* Ensure shop info column doesn't stretch vertically and has padding for border */
+.owner-detail-shops-info-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm); /* Gap between individual shop detail items */
+    align-self: start; /* Prevents stretching to the height of the other column */
+    padding-right: var(--spacing-lg); /* Space for the border */
+    border-right: 1px dashed var(--color-gray-300); /* Vertical dashed border */
+    flex-shrink: 0; /* Prevent this column from shrinking below its content */
+}
+
+.owner-detail-barbers-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md); /* Gap between barber cards/table and title */
+    /* Space for the border */
+    flex-grow: 1; /* Allow this column to grow and take available space */
+    min-width: 0; /* Allow content to shrink if necessary, enabling overflow-x */
+}
+
+/* Barber Card for Mobile View */
+.barber-card {
+    background-color: var(--color-gray-50);
+    border: 1px solid var(--color-gray-200);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.barber-card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-weight: var(--font-semibold);
+    font-size: var(--font-size-lg);
+    color: var(--color-brand-primary);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px dashed var(--color-gray-200);
+}
+
+.barber-card-detail-item {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.barber-card-status {
+    font-weight: var(--font-semibold);
+}
+
+/* Hide table on mobile, show cards with toggle */
+@media (max-width: 767px) {
+    .barbers-desktop-table {
+        display: none; /* Hide table on mobile */
+    }
+    .barbers-mobile-cards {
+        /* Only show if expanded - controlled by JS */
+        display: flex; /* Default to flex, will be hidden by JS if not expanded */
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    /* Show toggle button for barbers on mobile */
+    .toggle-barbers-button-mobile {
+        display: flex; /* Show the new toggle button */
+    }
+    /* Remove vertical border and padding on mobile */
+    .owner-detail-shops-info-column {
+        border-right: none;
+        padding-right: 0;
+    }
+    .owner-detail-barbers-section {
+        padding-left: 0;
+    }
+}
+
+/* Hide cards on desktop, show table without toggle */
+@media (min-width: 768px) {
+    .barbers-desktop-table {
+        display: block;
+        width: 95%; /* Show table on desktop */
+    }
+    .barbers-mobile-cards {
+        display: none; /* Hide cards on desktop */
+    }
+    /* Hide toggle button for barbers on desktop */
+    .toggle-barbers-button-mobile {
+        display: none;
+    }
+}
+
+
+/* Responsive Adjustments (fine-tuning for smaller screens) */
+@media (max-width: 640px) {
+    .header-content, .main-content-inner {
+        padding: 0 var(--spacing-md);
+    }
+    .header-title {
+        font-size: var(--font-size-2xl);
+    }
+    .header-title svg {
+        width: 28px;
+        height: 28px;
+    }
+    .nav-button {
+        padding: var(--spacing-xs) var(--spacing-md);
+        font-size: var(--font-size-sm);
+    }
+    .nav-button svg {
+        width: 16px;
+        height: 16px;
+    }
+    .section-card {
+        padding: var(--spacing-lg);
+    }
+    .section-title {
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--spacing-md);
+        padding-bottom: var(--spacing-sm);
+    }
+    .filter-section {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-md);
+    }
+    .filter-group {
+        min-width: unset;
+        width: 100%;
+    }
+    .info-card {
+        padding: var(--spacing-sm);
+    }
+    .info-card-name {
+        font-size: var(--font-size-base);
+    }
+    .info-card-name svg {
+        width: 16px;
+        height: 16px;
+    }
+    .info-card-details p {
+        font-size: var(--font-size-xs);
+    }
+    .info-card-details p svg {
+        width: 12px;
+        height: 12px;
+    }
+    .shop-card-nested {
+        padding: var(--spacing-sm);
+        margin-top: var(--spacing-sm);
+    }
+    .shop-card-title {
+        font-size: var(--font-size-base);
+    }
+    .shop-card-title svg {
+        width: 16px;
+        height: 16px;
+    }
+    .expand-button {
+        width: 28px;
+        height: 28px;
+    }
+    .expand-button svg {
+        width: 18px;
+        height: 18px;
+    }
+    .status-tag {
+        font-size: 0.6rem;
+        padding: 0.2rem 0.5rem;
+    }
+    .status-tag svg {
+        width: 12px;
+        height: 12px;
+    }
+    .data-table th, .data-table td {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-xs);
+    }
+    .data-table th svg, .data-table td svg {
+        width: 14px;
+        height: 14px;
+    }
+    .back-button {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-sm);
+    }
+    .back-button svg {
+        width: 16px;
+        height: 16px;
+    }
+    .detail-card-section-title {
+        font-size: var(--font-size-lg);
+    }
+    .detail-item {
+        font-size: var(--font-size-sm);
+    }
+    .detail-item svg {
+        width: 14px;
+        height: 14px;
+    }
+    .summary-card {
+        padding: var(--spacing-md);
+        gap: var(--spacing-xs);
+    }
+    .summary-card-icon {
+        padding: var(--spacing-xs);
+    }
+    .summary-card-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+    .summary-card-title {
+        font-size: var(--font-size-xs);
+    }
+    .summary-card-value {
+        font-size: var(--font-size-2xl);
+    }
+    .footer-nav {
+        gap: var(--spacing-md);
+    }
+    .footer-link {
+        font-size: var(--font-size-xs);
+    }
+    .static-content h3 {
+        font-size: var(--font-size-base);
+    }
+    .static-content p, .static-content li {
+        font-size: var(--font-size-sm);
+    }
+    .barber-card {
+        padding: var(--spacing-sm);
+    }
+    .barber-card-header {
+        font-size: var(--font-size-base);
+    }
+    .barber-card-detail-item {
+        font-size: var(--font-size-xs);
+    }
+}
