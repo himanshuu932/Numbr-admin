@@ -9,7 +9,7 @@ const UserDetailView = ({ user, onBack }) => {
     // const [user, setUser] = useState(null);
     // const [loading, setLoading] = useState(true);
     // const [error, setError] = useState(null);
-    // const API_URL = process.env."https://numbr-p7zc.onrender.com";
+    // const API_URL = process.env."https://numbr-exq6.onrender.com";
     // useEffect hook and its content are removed
 
     if (!user) {
