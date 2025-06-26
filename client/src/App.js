@@ -37,7 +37,7 @@ function App() {
   const [errorAllData, setErrorAllData] = useState(null);
 
   // API base URL from environment variables
-    const API_URL = "http://localhost:5000";
+    const API_URL = "https://numbr-p7zc.onrender.com";
 
   // --- IMPORTANT: AUTHENTICATION ---
   // The admin routes are protected. A valid JWT token for an admin user must be sent.
