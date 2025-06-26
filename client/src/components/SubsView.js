@@ -15,7 +15,7 @@ const SubsView = () => {
     const [durationValue, setDurationValue] = useState('');
     const [durationUnit, setDurationUnit] = useState('days'); // Default to 'days'
 
-   const API_URL = process.env.REACT_APP_API_URL;
+   const API_URL = "https://numbr-p7zc.onrender.com";
 
     const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWQyMzA3ODA1ZDY1MWE4NWUxMGNjYiIsImlhdCI6MTc1MDkzNDI3OSwiZXhwIjoxNzUxMjk0Mjc5fQ.WV5KnRkxKqBoBejewcth7GCoOsH43U70Y7RvRFYFQ9A";
 
