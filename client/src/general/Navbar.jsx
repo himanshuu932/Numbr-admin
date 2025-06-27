@@ -70,9 +70,7 @@ export default function Navbar({ setActiveView }) {
       if (currentTime - firstClickTime.current < contactClickThreshold) {
         setActiveView("admin");
         alert("Admin view activated!");
-      } else {
-        alert("Too slow! Admin mode activation failed.");
-      }
+      } 
       resetClickTracking(); // Always reset after attempting contact click
       event.preventDefault(); // Prevent default navigation if admin mode was attempted
     } else {
