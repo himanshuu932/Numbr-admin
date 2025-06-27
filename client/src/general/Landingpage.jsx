@@ -8,7 +8,7 @@ import ContactUs from './ContactUs';
 import Features from './Featurex';
 import Download from './Download';
 
-export default function NumbrRedesignedLanding() {
+export default function NumbrRedesignedLanding({setActiveView}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [hoveredButton, setHoveredButton] = useState(null)
 
@@ -16,7 +16,7 @@ export default function NumbrRedesignedLanding() {
     <div className="min-h-screen bg-white">
  
        
-       <Navbar/>
+       <Navbar setActiveView={setActiveView}/>
 
     
       <section className="relative bg-black text-white min-h-screen overflow-hidden pt-16">

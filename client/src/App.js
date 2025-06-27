@@ -21,7 +21,7 @@ function App() {
     activeView === 'dashboard' ? (
     <div className="app-container">
       
-        <NumbrLanding/>
+        <NumbrLanding setActiveView={setActiveView}/>
 
     </div>)
     :(<>
