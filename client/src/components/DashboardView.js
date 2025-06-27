@@ -116,139 +116,166 @@ const DashboardView = ({ allShops, allUsers, allSubscriptions, allOwners }) => {
     const overallMonthlyIncome = shopIncome.monthly + userIncome.monthly;
     // --- END DUMMY INCOME CALCULATION ---
 
-    return (
-        <div className="section-card">
-            <h2 className="section-title">
-                <BarChart3 size={22} color="var(--color-brand-primary)" /> Dashboard Overview
-            </h2>
+return (
+    <div className="section-card">
+        <h2 className="section-title">
+            <BarChart3 size={22} color="var(--color-brand-primary)" /> Dashboard Overview
+        </h2>
 
-            <div className="summary-card-grid">
-                {/* Total Shops Card */}
-                <div className="summary-card total-shops">
-                    <div className="summary-card-icon">
-                        <Store size={28} color="var(--color-text-white)" />
-                    </div>
+        <div className="summary-card-grid">
+            {/* Total Shops Card */}
+            <div className="summary-card total-shops">
+                <div className="summary-card-icon">
+                    <Store size={28} color="var(--color-text-white)" />
+                </div>
+                {/* Wrap text content in summary-card-content */}
+                <div className="summary-card-content">
                     <p className="summary-card-title">Total Shops</p>
                     <p className="summary-card-value">{totalShops}</p>
                 </div>
+            </div>
 
-                {/* Overall Active Subscriptions Card */}
-                <div className="summary-card active-subscriptions">
-                    <div className="summary-card-icon">
-                        <CheckCircle size={28} color="var(--color-text-white)" />
-                    </div>
+            {/* Overall Active Subscriptions Card */}
+            <div className="summary-card active-subscriptions">
+                <div className="summary-card-icon">
+                    <CheckCircle size={28} color="var(--color-text-white)" />
+                </div>
+                <div className="summary-card-content">
                     <p className="summary-card-title">Active Subscriptions</p>
                     <p className="summary-card-value">{totalActiveSubscriptionsOverall}</p>
                 </div>
+            </div>
 
-                {/* Overall Income Card */}
-                <div className="summary-card total-income">
-                    <div className="summary-card-icon">
-                        <DollarSign size={28} color="var(--color-text-white)" />
-                    </div>
+            {/* Overall Income Card */}
+            <div className="summary-card total-income">
+                <div className="summary-card-icon">
+                    <DollarSign size={28} color="var(--color-text-white)" />
+                </div>
+                <div className="summary-card-content">
                     <p className="summary-card-title">Income (Overall)</p>
                     <p className="summary-card-value">${overallTotalIncome.toFixed(2)}</p>
                     <p className="text-sm text-gray-600">(This Month: ${overallMonthlyIncome.toFixed(2)})</p>
                     <p className="text-xs text-danger">*(Dummy Calculation)*</p>
                 </div>
+            </div>
 
-                {/* Expired Shops Card */}
-                <div className="summary-card expired-shops">
-                    <div className="summary-card-icon">
-                        <CalendarX size={28} color="var(--color-text-white)" />
-                    </div>
+            {/* Expired Shops Card */}
+            <div className="summary-card expired-shops">
+                <div className="summary-card-icon">
+                    <CalendarX size={28} color="var(--color-text-white)" />
+                </div>
+                <div className="summary-card-content">
                     <p className="summary-card-title">Expired Shops</p>
                     <p className="summary-card-value">{totalExpiredShops}</p>
                 </div>
             </div>
+        </div>
 
-            {/* Owners Breakdown Section */}
-            <h3 className="detail-card-section-title" style={{ marginTop: 'var(--spacing-2xl)' }}>
-                <Building size={20} color="var(--color-brand-primary)" /> Owners Breakdown
-            </h3>
-            <div className="summary-card-grid">
-                {/* Total Owners Card */}
-                <div className="summary-card owners">
-                    <div className="summary-card-icon">
-                        <User size={28} color="var(--color-text-white)" />
-                    </div>
+        {/* Owners Breakdown Section */}
+        <h3 className="detail-card-section-title" style={{ marginTop: 'var(--spacing-2xl)' }}>
+            <Building size={20} color="var(--color-brand-primary)" /> Owners Breakdown
+        </h3>
+        <div className="summary-card-grid">
+            {/* Total Owners Card */}
+            <div className="summary-card owners">
+                <div className="summary-card-icon">
+                    <User size={28} color="var(--color-text-white)" />
+                </div>
+                <div className="summary-card-content">
                     <p className="summary-card-title">Total Owners</p>
                     <p className="summary-card-value">{allOwners.length}</p>
                 </div>
-                {/* Fully Subscribed Owners Card */}
-                <div className="summary-card active-subscriptions">
-                    <div className="summary-card-icon">
-                        <CheckCircle size={28} color="var(--color-text-white)" />
-                    </div>
+            </div>
+            {/* Fully Subscribed Owners Card */}
+            <div className="summary-card active-subscriptions">
+                <div className="summary-card-icon">
+                    <CheckCircle size={28} color="var(--color-text-white)" />
+                </div>
+                <div className="summary-card-content">
                     <p className="summary-card-title">Fully Subscribed Owners</p>
                     <p className="summary-card-value">{ownersFullySubscribedCount}</p>
                 </div>
-                {/* Partially Subscribed Owners Card */}
-                <div className="summary-card owners">
-                    <div className="summary-card-icon">
-                        <TrendingUp size={28} color="var(--color-text-white)" />
-                    </div>
+            </div>
+            {/* Partially Subscribed Owners Card */}
+            <div className="summary-card owners">
+                <div className="summary-card-icon">
+                    <TrendingUp size={28} color="var(--color-text-white)" />
+                </div>
+                <div className="summary-card-content">
                     <p className="summary-card-title">Partially Subscribed Owners</p>
                     <p className="summary-card-value">{ownersPartiallySubscribedCount}</p>
                 </div>
-                {/* Owners in Trial Card */}
-                <div className="summary-card users">
-                    <div className="summary-card-icon">
-                        <Clock size={28} color="var(--color-text-white)" />
-                    </div>
+            </div>
+            {/* Owners in Trial Card */}
+            <div className="summary-card users">
+                <div className="summary-card-icon">
+                    <Clock size={28} color="var(--color-text-white)" />
+                </div>
+                <div className="summary-card-content">
                     <p className="summary-card-title">Owners in Trial</p>
                     <p className="summary-card-value">{ownersTrialCount}</p>
                 </div>
-                {/* Unsubscribed Owners Card */}
-                <div className="summary-card expired-shops">
-                    <div className="summary-card-icon">
-                        <XCircle size={28} color="var(--color-text-white)" />
-                    </div>
+            </div>
+            {/* Unsubscribed Owners Card */}
+            <div className="summary-card expired-shops">
+                <div className="summary-card-icon">
+                    <XCircle size={28} color="var(--color-text-white)" />
+                </div>
+                <div className="summary-card-content">
                     <p className="summary-card-title">Unsubscribed Owners</p>
                     <p className="summary-card-value">{ownersUnsubscribedCount}</p>
                 </div>
             </div>
+        </div>
 
-            {/* Users Breakdown Section */}
-            <h3 className="detail-card-section-title" style={{ marginTop: 'var(--spacing-2xl)' }}>
-                <Users size={20} color="var(--color-brand-primary)" /> Users Breakdown
-            </h3>
-            <div className="summary-card-grid">
-                {/* Total Users Card */}
-                <div className="summary-card users">
-                    <div className="summary-card-icon">
-                        <User size={28} color="var(--color-text-white)" />
-                    </div>
+        {/* Users Breakdown Section */}
+        <h3 className="detail-card-section-title" style={{ marginTop: 'var(--spacing-2xl)' }}>
+            <Users size={20} color="var(--color-brand-primary)" /> Users Breakdown
+        </h3>
+        <div className="summary-card-grid">
+            {/* Total Users Card */}
+            <div className="summary-card users">
+                <div className="summary-card-icon">
+                    <User size={28} color="var(--color-text-white)" />
+                </div>
+                <div className="summary-card-content">
                     <p className="summary-card-title">Total Users</p>
                     <p className="summary-card-value">{totalUsers}</p>
                 </div>
-                {/* Subscribed Users Card */}
-                <div className="summary-card active-subscriptions">
-                    <div className="summary-card-icon">
-                        <CheckCircle size={28} color="var(--color-text-white)" />
-                    </div>
+            </div>
+            {/* Subscribed Users Card */}
+            <div className="summary-card active-subscriptions">
+                <div className="summary-card-icon">
+                    <CheckCircle size={28} color="var(--color-text-white)" />
+                </div>
+                <div className="summary-card-content">
                     <p className="summary-card-title">Subscribed Users</p>
                     <p className="summary-card-value">{usersSubscribedCount}</p>
                 </div>
-                {/* Users in Trial Card */}
-                <div className="summary-card users">
-                    <div className="summary-card-icon">
-                        <Clock size={28} color="var(--color-text-white)" />
-                    </div>
+            </div>
+            {/* Users in Trial Card */}
+            <div className="summary-card users">
+                <div className="summary-card-icon">
+                    <Clock size={28} color="var(--color-text-white)" />
+                </div>
+                <div className="summary-card-content">
                     <p className="summary-card-title">Users in Trial</p>
                     <p className="summary-card-value">{usersTrialCount}</p>
                 </div>
-                {/* Unsubscribed Users Card */}
-                <div className="summary-card expired-shops">
-                    <div className="summary-card-icon">
-                        <XCircle size={28} color="var(--color-text-white)" />
-                    </div>
+            </div>
+            {/* Unsubscribed Users Card */}
+            <div className="summary-card expired-shops">
+                <div className="summary-card-icon">
+                    <XCircle size={28} color="var(--color-text-white)" />
+                </div>
+                <div className="summary-card-content">
                     <p className="summary-card-title">Unsubscribed Users</p>
                     <p className="summary-card-value">{usersUnsubscribedCount}</p>
                 </div>
             </div>
         </div>
-    );
+    </div>
+);
 };
 
 export default DashboardView;

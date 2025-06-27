@@ -1,19 +1,95 @@
 /* barbers-dev-panel/src/App.css */
 
+/* CSS Variables for Black & White Theme with Accent Colors */
+:root {
+  /* Base Black & White Theme */
+  --color-bg-body: #F9F9F9; /* Very light gray for overall background (softer than pure white) */
+  --color-bg-card: #FFFFFF; /* Pure white for card backgrounds */
+  --color-bg-filter: #F5F5F5; /* Very light gray for filter sections */
+  --color-bg-footer: #000000; /* Pure black for footer background */
+
+  --color-text-default: #1A1A1A; /* Very dark gray for main text */
+  --color-text-light: #555555; /* Medium gray for secondary/less prominent text */
+  --color-text-white: #FFFFFF; /* Pure white for text on dark backgrounds (e.g., header, footer) */
+  --color-text-dark: #000000; /* Pure black for text on white backgrounds */
+
+  --border-color: #E0E0E0; /* Light gray for general borders */
+
+  /* Grayscale palette for elements that need different shades of gray */
+  --color-gray-50: #F9F9F9;   /* New lightest gray, used for body background */
+  --color-gray-100: #F0F0F0;
+  --color-gray-200: #E0E0E0;
+  --color-gray-300: #CCCCCC;
+  --color-gray-400: #AAAAAA;
+  --color-gray-500: #777777;  /* Added for more granularity in grays */
+  --color-gray-600: #4B5563;
+  --color-gray-700: #333333; /* Added for dark text/elements */
+  --color-gray-800: #1a1a1a; /* Very dark gray, almost black */
+  --color-gray-900: #111827;
+
+  /* Brand and Semantic Colors (these retain their vibrancy for icons, logos, and indicators) */
+  --color-brand-primary: #000000; /* Primary brand accent (black) */
+  --color-brand-secondary: #333333; /* Secondary brand accent (dark gray) */
+  --color-brand-accent: #ffffff; /* Accent color (white) */
+
+  --color-info: #3B82F6; /* Blue for informational elements */
+  --color-success: #10B981; /* Green */
+  --color-warning: #F59E0B; /* Orange */
+  --color-danger: #EF4444; /* Red */
+
+  /* Specific owner card background colors - adjusted to be very light versions of their status colors */
+  --owner-card-fully-subscribed-bg: #EAF7ED; /* Very light green */
+  --owner-card-partially-subscribed-bg: #FEF3C7; /* Very light orange */
+  --owner-card-unsubscribed-bg: #FEE2E2; /* Very light red */
+  --owner-card-trial-bg: #DBEAFE; /* Very light blue for trial owners */
+
+  /* Shadows - upgraded for a softer, more modern feel */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1), 0 2px 5px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.12), 0 5px 15px rgba(0, 0, 0, 0.08);
+
+  /* Font sizes, spacing, and border radii */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+
+  --font-light: 300; /* Added missing font-light definition */
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.25rem;
+  --spacing-xl: 1.5rem;
+  --spacing-2xl: 2rem;
+  --spacing-3xl: 3rem;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-full: 9999px; /* For pills/circles */
+}
+
 /* Overall App Layout */
 .app-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: var(--color-bg-body);
+  background-color: var(--color-bg-body); /* Uses softer off-white body background */
 }
 
 /* Header */
 .app-header {
-  background: linear-gradient(to right, var(--color-brand-primary), var(--color-brand-secondary));
-  color: var(--color-text-white);
+  background: var(--color-brand-primary); /* Uses black brand primary color */
+  color: var(--color-text-white); /* White text for contrast */
   padding: var(--spacing-md) 0;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-lg); /* Uses upgraded shadow */
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -54,8 +130,8 @@
 
 .nav-button {
   background-color: transparent;
-  color: var(--color-text-white);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--color-text-white); /* White text */
+  border: 1px solid rgba(255, 255, 255, 0.4); /* Softer white border */
   padding: var(--spacing-sm) var(--spacing-lg);
   border-radius: var(--radius-md);
   font-size: var(--font-size-base);
@@ -68,16 +144,17 @@
 }
 
 .nav-button:hover {
-  background-color: var(--color-brand-secondary);
-  border-color: var(--color-brand-secondary);
+  background-color: var(--color-gray-800); /* Very dark gray on hover */
+  border-color: var(--color-gray-800); /* Match border to background */
   transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-sm); /* Uses upgraded shadow */
+  color: var(--color-text-white); /* Keep white text */
 }
 
 .nav-button.active {
-  background-color: var(--color-bg-card);
-  color: var(--color-brand-primary);
-  box-shadow: var(--shadow-md);
+  background-color: var(--color-bg-card); /* White active state */
+  color: var(--color-brand-primary); /* Black brand color for text */
+  box-shadow: var(--shadow-md); /* Uses upgraded shadow */
   border-color: var(--color-bg-card);
   transform: translateY(0);
 }
@@ -95,115 +172,156 @@
   margin: 0 auto;
   padding: 0 var(--spacing-lg);
 }
-/* In App.css or a dedicated modal.css file */
 
+/* Modal */
 .modal-overlay {
-  position: fixed; /* Fixes it to the viewport */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.7); /* Standard dark overlay */
   display: flex;
-  justify-content: center; /* Centers content horizontally */
-  align-items: center; /* Centers content vertically */
-  z-index: 1000; /* Ensures it's on top of other content */
-}
-
-.modal-content {
-  background-color: var(--color-bg-card); /* Use your card background color */
-  padding: var(--spacing-xl);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  position: relative; /* Needed for z-index or other positioning within the modal */
-  max-width: 90%; /* Adjust as needed */
-  max-height: 90%; /* Adjust as needed */
-  overflow-y: auto; /* Add scroll for long content */
-  z-index: 1001; /* Ensure content is above overlay if needed for specific cases */
-}
-
-/* Optional: Add a transition for a smoother appearance */
-.modal-overlay {
-  opacity: 0;
-  animation: fadeIn 0.3s forwards;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0; /* Initial state for animation */
+  animation: fadeIn 0.3s forwards; /* Animation added for appearance */
 }
 
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-/* Section Card */
-.section-card {
-  background-color: var(--color-bg-card);
+
+.modal-content {
+  background-color: var(--color-bg-card); /* White card background */
   padding: var(--spacing-xl);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  margin-bottom: var(--spacing-2xl);
+  box-shadow: var(--shadow-lg); /* Uses upgraded shadow */
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  z-index: 1001;
+  color: var(--color-text-default); /* Default text color for modal content */
+}
+
+/* Section Card (Main Container for the Page Content) */
+.section-card {
+  background-color: var(--color-bg-card); /* Consistent card background */
+  padding: var(--spacing-2xl); /* Increased padding for more spacious feel */
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md); /* Uses upgraded shadow */
+  margin: var(--spacing-2xl) auto; /* Increased margin for better separation */
+  max-width: 1200px;
+  width: 95%;
   border: 1px solid var(--border-color);
 }
 
 .section-title {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-bold);
+  font-size: var(--font-size-2xl); /* Slightly larger title */
+  color: var(--color-text-dark); /* Pure black for titles */
   margin-bottom: var(--spacing-lg);
-  color: var(--color-brand-primary);
-  border-bottom: 1px solid var(--color-gray-200);
-  padding-bottom: var(--spacing-md);
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: var(--spacing-sm);
 }
 
-/* Filter Section */
+/* --- Filter Section --- */
 .filter-section {
-  background-color: var(--color-bg-filter);
-  padding: var(--spacing-lg);
-  border-radius: var(--radius-md);
-  margin-bottom: var(--spacing-xl);
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-md);
-  align-items: flex-end;
-  border: 1.5px solid var(--border-color); /* Slightly thicker border */
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl); /* Increased margin bottom */
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-gray-100); /* Lighter separator */
 }
 
-.filter-group {
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
   flex: 1;
-  min-width: 200px; /* Adjusted min-width for better mobile layout */
+  min-width: 250px;
 }
 
-/* Info Cards (Owner Cards, Dashboard Summary Cards) */
+.form-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light); /* Medium gray for labels */
+  font-weight: var(--font-medium);
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-xs);
+}
+
+.form-input,
+.form-select {
+  padding: var(--spacing-md); /* Slightly more padding for inputs */
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md); /* Slightly more rounded */
+  font-size: var(--font-size-base);
+  color: var(--color-text-default);
+  background-color: var(--color-bg-card);
+  transition: all 0.2s ease-in-out; /* Unified transition */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.form-input::placeholder {
+  color: var(--color-gray-500); /* Better placeholder color */
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: var(--color-text-dark); /* Black border on focus */
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1); /* Subtle black ring on focus */
+  outline: none;
+}
+
+.form-select {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-md) center; /* Adjusted position */
+  background-size: 16px;
+  padding-right: var(--spacing-xl); /* Make space for the custom arrow */
+}
+
+/* --- Info Cards (Owner Cards, Dashboard Summary Cards) --- */
 .info-card {
   background-color: var(--color-bg-card);
-  padding: var(--spacing-md);
+  padding: var(--spacing-lg); /* Slightly more padding */
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-sm); /* Uses upgraded shadow */
   border: 1px solid var(--border-color);
-  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-color 0.15s ease-in-out;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: var(--spacing-sm); /* Gap between header and details */
+  gap: var(--spacing-sm);
 }
 
 .info-card.clickable:hover {
-  transform: translateY(-3px); /* More pronounced lift */
-  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md); /* Uses upgraded shadow */
   cursor: pointer;
+  border-color: var(--color-gray-500); /* Darker border on hover */
 }
 
 .info-card-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: var(--spacing-sm); /* Space between header and details */
+  align-items: flex-start;
+  margin-bottom: var(--spacing-sm);
 }
 
 .info-card-name {
   font-weight: var(--font-semibold);
   font-size: var(--font-size-lg);
-  color: var(--color-text-default);
+  color: var(--color-text-dark);
   margin: 0;
   display: flex;
   align-items: center;
@@ -218,574 +336,598 @@
   align-items: center;
   gap: var(--spacing-xs);
 }
+
 .info-card-details p:last-child {
   margin-bottom: 0;
 }
 
-/* Specific Card Colors for Owner List */
-.owner-card.fully-subscribed { background-color: #D1FAE5; border-color: var(--color-success); } /* Light Green */
-.owner-card.partially-subscribed { background-color: #FEF3C7; border-color: var(--color-warning); } /* Light Orange */
-.owner-card.unsubscribed { background-color: #FEE2E2; border-color: var(--color-danger); } /* Light Red */
-.owner-card.trial { background-color: #DBEAFE; border-color: var(--color-info); } /* Light Blue for trial owners */
+/* --- Subscription Tags (New styles for black and white with subtle accents) --- */
+.subscription-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.3rem 0.7rem; /* Slightly more vertical padding */
+  border-radius: var(--radius-full); /* Pill shape */
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08); /* Subtle shadow for tags */
+}
 
+.subscription-tag.fully {
+  background-color: var(--color-brand-primary); /* Black for fully subscribed */
+  color: var(--color-text-white);
+  border: 1px solid var(--color-brand-primary);
+}
+
+.subscription-tag.partially {
+  background-color: var(--color-gray-700); /* Dark gray for partially subscribed */
+  color: var(--color-text-white);
+  border: 1px solid var(--color-gray-700);
+}
+
+.subscription-tag.trial {
+  background-color: var(--color-gray-500); /* Medium gray for trial */
+  color: var(--color-text-white);
+  border: 1px solid var(--color-gray-500);
+}
+
+.subscription-tag.unsubscribed {
+  background-color: var(--color-gray-300); /* Light gray for unsubscribed */
+  color: var(--color-text-dark); /* Dark text on light background */
+  border: 1px solid var(--color-gray-300);
+}
+
+/* Specific Card Colors for Owner List (backgrounds adjusted to very light shades, borders to accent colors) */
+.owner-card.fully-subscribed {
+  border-color: var(--color-success); /* Green border */
+  background-color: var(--owner-card-fully-subscribed-bg); /* Very light green background */
+}
+.owner-card.partially-subscribed {
+  border-color: var(--color-warning); /* Yellow border */
+  background-color: var(--owner-card-partially-subscribed-bg); /* Very light yellow background */
+}
+.owner-card.unsubscribed {
+  border-color: var(--color-danger); /* Red border */
+  background-color: var(--owner-card-unsubscribed-bg); /* Very light red background */
+}
+.owner-card.trial {
+  border-color: var(--color-info); /* Blue border */
+  background-color: var(--owner-card-trial-bg); /* Very light blue background */
+}
+
+/* --- Subsection Titles (Categorized Owners) --- */
+.subsection-owners {
+  margin-top: var(--spacing-2xl); /* Increased margin top */
+}
+
+.subsection-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--color-text-dark); /* Default dark gray */
+}
+
+/* Subtle color hints for subsection titles */
+.subsection-title.green { color: var(--color-success); border-color: var(--color-success); }
+.subsection-title.yellow { color: var(--color-warning); border-color: var(--color-warning); }
+.subsection-title.blue { color: var(--color-info); border-color: var(--color-info); }
+.subsection-title.red { color: var(--color-danger); border-color: var(--color-danger); }
 
 /* Dashboard Summary Cards */
 .summary-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Responsive grid */
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-xl);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--spacing-xl); /* Increased gap */
+  margin-bottom: var(--spacing-2xl); /* Increased margin bottom */
 }
 
 .summary-card {
-    background-color: var(--color-bg-card);
-    padding: var(--spacing-lg);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--spacing-sm);
-    border: 1px solid var(--border-color);
+  background-color: var(--color-gray-800); /* Consistent dark gray background */
+  padding: var(--spacing-xl); /* More padding */
+  border-radius: var(--radius-lg); /* Larger rounded corners */
+  box-shadow: var(--shadow-md); /* Uses upgraded shadow */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-md); /* More space inside */
+  border: 1px solid var(--color-gray-700); /* Darker border for depth */
 }
 
 .summary-card-icon {
-    background-color: var(--color-brand-primary);
-    color: var(--color-text-white);
-    padding: var(--spacing-sm);
-    border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-sm);
+  background-color: var(--color-brand-primary); /* Default to primary brand color (black) */
+  color: var(--color-text-white); /* White icon color */
+  padding: var(--spacing-md); /* Larger icon padding */
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm); /* Uses upgraded shadow */
 }
 
 .summary-card-title {
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-medium);
-    color: var(--color-text-light);
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+  font-size: var(--font-size-base); /* Slightly larger font */
+  font-weight: var(--font-medium);
+  color: black; /* Lighter gray for title on dark card */
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em; /* More prominent letter spacing */
 }
 
 .summary-card-value {
-    font-size: var(--font-size-3xl);
-    font-weight: var(--font-bold);
-    color: var(--color-text-default);
-    margin: 0;
-    line-height: 1;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-bold);
+  color: black; /* White value for pure contrast */
+  margin: 0;
+  line-height: 1;
+}
+.summary-card.total-income{
+    color: white;
 }
 
-/* Specific Summary Card Colors */
+/* Specific Summary Card Icon Colors (retains original accent colors and converts rgb to hex/variables) */
 .summary-card.total-shops .summary-card-icon { background-color: var(--color-info); }
 .summary-card.active-subscriptions .summary-card-icon { background-color: var(--color-success); }
-.summary-card.total-income .summary-card-icon { background-color: var(--color-brand-primary); }
+.summary-card.total-income .summary-card-icon { background-color: var(--color-warning); } /* Used --color-warning */
 .summary-card.expired-shops .summary-card-icon { background-color: var(--color-danger); }
-.summary-card.owners .summary-card-icon { background-color: var(--color-brand-secondary); }
+.summary-card.owners .summary-card-icon { background-color: var(--color-info); } /* Used --color-info */
 .summary-card.users .summary-card-icon { background-color: var(--color-gray-600); }
-
 
 /* Shop Card Nested within Owner Detail */
 .shop-card-nested {
-    background-color: var(--color-gray-50);
-    border: 1px solid var(--color-gray-200);
-    padding: var(--spacing-md);
-    border-radius: var(--radius-md);
-    margin-top: var(--spacing-md);
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.02);
+  background-color: var(--color-gray-50); /* Very light gray background */
+  border: 1px solid var(--border-color);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-top: var(--spacing-md);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.02);
 }
 
 .shop-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: var(--spacing-sm);
-    border-bottom: 1px dashed var(--color-gray-200);
-    margin-bottom: var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px dashed var(--border-color); /* Light gray dashed border */
+  margin-bottom: var(--spacing-md);
 }
 
 .shop-card-title {
-    font-weight: var(--font-semibold);
-    font-size: var(--font-size-lg);
-    color: var(--color-brand-primary);
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
+  font-weight: var(--font-semibold);
+  font-size: var(--font-size-lg);
+  color: var(--color-text-dark);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
 }
 
 .shop-details-item {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-xs);
-    display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-sm);
-    line-height: 1.4; /* Ensure consistent line height */
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-xs);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  line-height: 1.4;
 }
 .shop-details-item svg {
-    flex-shrink: 0;
-    margin-top: 0.1rem; /* Adjust icon alignment */
+  flex-shrink: 0;
+  margin-top: 0.1rem;
 }
 
-/* Expand/Collapse Button for Shops (old, now removed from HTML) */
+/* Expand/Collapse Button (if used, will adjust to theme) */
 .expand-button {
-    background: none;
-    border: none;
-    color: var(--color-brand-primary);
-    cursor: pointer;
-    font-size: var(--font-size-xl);
-    transition: transform 0.2s ease-in-out;
-    padding: var(--spacing-xs);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-full);
-    width: 32px;
-    height: 32px;
+  background: none;
+  border: none;
+  color: var(--color-brand-primary);
+  cursor: pointer;
+  font-size: var(--font-size-xl);
+  transition: transform 0.2s ease-in-out;
+  padding: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  width: 32px;
+  height: 32px;
 }
 
 .expand-button:hover {
-    background-color: rgba(90, 45, 130, 0.08);
+  background-color: rgba(0, 0, 0, 0.1); /* Subtle black hover effect */
 }
 
 .expand-button.expanded {
-    transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
-/* Subscription Status Tags */
+/* Subscription Status Tags (backgrounds are accent colors, text is white or dark for contrast) */
 .status-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25em;
-    padding: 0.25rem 0.6rem;
-    border-radius: var(--radius-full);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-semibold);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    white-space: nowrap;
-    text-align: center;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.08);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  text-align: center;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.08);
 }
 
 .status-active { background-color: var(--color-success); color: var(--color-text-white); }
-.status-trial { background-color: var(--color-warning); color: var(--color-gray-900); }
+.status-trial { background-color: var(--color-warning); color: var(--color-gray-900); } /* Dark text for contrast on yellow/orange */
 .status-expired { background-color: var(--color-danger); color: var(--color-text-white); }
 
-/* Table Styles */
+/* Table Styles (re-using and ensuring consistency) */
 .data-table-container {
-    overflow-x: auto; /* Allows horizontal scrolling for large tables */
-    width: 100%; /* Take full width of its parent column */
-    margin-top: var(--spacing-lg);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-sm);
+  overflow-x: auto;
+  width: 100%;
+  margin-top: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  background-color: var(--color-bg-card); /* Consistent with card background */
 }
 
 .data-table {
-    width: 100%; /* Table itself takes 100% of the container */
-    border-collapse: separate;
-    border-spacing: 0;
-    font-size: var(--font-size-base);
-    min-width: 600px; /* Ensures columns don't get too narrow, triggers overflow-x */
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: var(--font-size-base);
+  min-width: 600px;
+}
+
+.data-table thead {
+  background-color: var(--color-gray-100); /* Lightest gray header background */
+  border-bottom: 1px solid var(--border-color);
 }
 
 .data-table th, .data-table td {
-    padding: var(--spacing-md) var(--spacing-lg);
-    text-align: left;
-    border-bottom: 1px solid var(--color-gray-200);
+  padding: var(--spacing-md) var(--spacing-lg);
+  text-align: left;
+  border-bottom: 1px solid var(--color-gray-100); /* Lighter border between rows */
+  color: var(--color-text-default); /* Default text color for cells */
 }
 
 .data-table th {
-    background-color: var(--color-gray-100);
-    font-weight: var(--font-semibold);
-    color: var(--color-text-light);
-    text-transform: uppercase;
-    font-size: var(--font-size-sm);
-    letter-spacing: 0.05em;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+  font-weight: var(--font-semibold);
+  color: var(--color-text-light); /* Medium gray text */
+  text-transform: uppercase;
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.05em;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: inherit;
 }
 
-.data-table thead tr:first-child th:first-child { border-top-left-radius: var(--radius-md); }
-.data-table thead tr:first-child th:last-child { border-top-right-radius: var(--radius-md); }
+.data-table tbody tr {
+  transition: background-color 0.15s ease-in-out;
+}
 
 .data-table tbody tr:hover {
-    background-color: var(--color-gray-50);
+  background-color: var(--color-gray-50); /* Very light gray on hover */
 }
 
 .data-table tbody tr:last-child td {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 /* User Table specific */
 .user-table-row {
-    cursor: pointer;
+  cursor: pointer;
 }
-.user-table-row:hover {
-    background-color: var(--color-gray-50);
-}
-
 
 /* Footer */
 .app-footer {
   background-color: var(--color-bg-footer);
   color: var(--color-text-white);
-  padding: var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-md);
   text-align: center;
   font-size: var(--font-size-sm);
   margin-top: auto;
+  border-top: 1px solid var(--color-gray-800);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .footer-nav {
-    display: flex;
-    justify-content: center;
-    gap: var(--spacing-xl);
-    margin-bottom: var(--spacing-sm);
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl); /* Consolidated gap */
+  margin-bottom: var(--spacing-md);
+  flex-wrap: wrap;
+  padding: 0 var(--spacing-md);
 }
 
 .footer-link {
-    color: var(--color-gray-400);
-    text-decoration: none;
-    font-size: var(--font-size-sm);
-    transition: color 0.2s ease-in-out;
-}
-.footer-link:hover {
-    color: var(--color-text-white);
-    text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-gray-400);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-medium); /* Changed to medium for consistency */
+  transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  padding: var(--spacing-xs);
+  outline: none;
+  letter-spacing: 0.02em;
 }
 
+.footer-link:hover {
+  color: var(--color-text-white);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.footer-link:focus {
+  color: var(--color-text-white);
+  text-decoration: none;
+  outline: none;
+}
+
+.app-footer p {
+  margin: 0;
+  color: var(--color-gray-600);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-light); /* Added font-light definition to root */
+  letter-spacing: 0.01em;
+}
 
 /* Loading and Error Messages */
 .loading-message, .error-message {
-    text-align: center;
-    padding: var(--spacing-2xl);
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-medium);
-    color: var(--color-gray-600);
+  text-align: center;
+  padding: var(--spacing-2xl);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-medium);
+  color: var(--color-text-light);
 }
 .error-message { color: var(--color-danger); }
 
 /* Back Button */
 .back-button {
-    margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* --- Button Styling (General) --- */
+.btn-secondary {
+  background-color: var(--color-gray-100); /* Lighter gray background */
+  color: var(--color-text-default); /* Darker text color */
+  border: 1px solid var(--border-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-gray-200); /* Slightly darker on hover */
+  color: var(--color-text-dark); /* Black text on hover */
+  border-color: var(--color-gray-400); /* Darker gray border on hover */
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary:focus {
+  outline: none;
+  border-color: var(--color-brand-primary); /* Black border on focus */
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary:active {
+  background-color: var(--color-gray-300);
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* Detail View Specific */
 .detail-card-section {
-    margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
 }
 .detail-card-section-title {
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-semibold);
-    color: var(--color-brand-primary);
-    margin-bottom: var(--spacing-md);
-    padding-bottom: var(--spacing-sm);
-    border-bottom: 1px solid var(--color-gray-200);
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-dark);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
 }
 
 .detail-item {
-    font-size: var(--font-size-base);
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-xs);
-    display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-sm);
+  font-size: var(--font-size-base);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-xs);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  line-height: 1.4;
 }
 .detail-item svg {
-    flex-shrink: 0;
-    margin-top: 0.15rem;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
 }
 
 .detail-item .status-tag {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 /* Static Content Pages */
 .static-content h3 {
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-semibold);
-    color: var(--color-brand-secondary);
-    margin-top: var(--spacing-xl);
-    margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-dark);
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
 }
 
 .static-content p {
-    margin-bottom: var(--spacing-md);
-    color: var(--color-text-light);
-    font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-light);
+  font-size: var(--font-size-base);
 }
 
 .static-content ul {
-    list-style-type: disc;
-    padding-left: var(--spacing-xl);
-    margin-bottom: var(--spacing-md);
+  list-style-type: disc;
+  padding-left: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
 }
 
 .static-content li {
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-text-light);
-    font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-light);
+  font-size: var(--font-size-base);
 }
 
 /* Owner Detail View - Shops & Barbers Layout */
 .owner-detail-content-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Default to single column for mobile */
-    gap: var(--spacing-xl); /* Gap between shop info and barber section */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
 }
 
-@media (min-width: 768px) { /* Tablet and Desktop */
-    .owner-detail-content-grid {
-        grid-template-columns: 30% 70%; /* Shop details on left, barbers on right */
-    }
+@media (min-width: 768px) {
+  .owner-detail-content-grid {
+    grid-template-columns: 30% 70%;
+  }
 }
 
-/* Ensure shop info column doesn't stretch vertically and has padding for border */
 .owner-detail-shops-info-column {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm); /* Gap between individual shop detail items */
-    align-self: start; /* Prevents stretching to the height of the other column */
-    padding-right: var(--spacing-lg); /* Space for the border */
-    border-right: 1px dashed var(--color-gray-300); /* Vertical dashed border */
-    flex-shrink: 0; /* Prevent this column from shrinking below its content */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  align-self: start;
+  padding-right: var(--spacing-lg);
+  border-right: 1px dashed var(--border-color);
+  flex-shrink: 0;
 }
 
 .owner-detail-barbers-section {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md); /* Gap between barber cards/table and title */
-    /* Space for the border */
-    flex-grow: 1; /* Allow this column to grow and take available space */
-    min-width: 0; /* Allow content to shrink if necessary, enabling overflow-x */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  flex-grow: 1;
+  min-width: 0;
 }
 
 /* Barber Card for Mobile View */
 .barber-card {
-    background-color: var(--color-gray-50);
-    border: 1px solid var(--color-gray-200);
-    padding: var(--spacing-md);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--border-color);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
 }
 
 .barber-card-header {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    font-weight: var(--font-semibold);
-    font-size: var(--font-size-lg);
-    color: var(--color-brand-primary);
-    padding-bottom: var(--spacing-xs);
-    border-bottom: 1px dashed var(--color-gray-200);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-weight: var(--font-semibold);
+  font-size: var(--font-size-lg);
+  color: var(--color-text-dark);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px dashed var(--border-color);
 }
 
 .barber-card-detail-item {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-light);
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
 }
 
 .barber-card-status {
-    font-weight: var(--font-semibold);
+  font-weight: var(--font-semibold);
 }
 
-/* Hide table on mobile, show cards with toggle */
+/* Responsive Adjustments */
 @media (max-width: 767px) {
-    .barbers-desktop-table {
-        display: none; /* Hide table on mobile */
-    }
-    .barbers-mobile-cards {
-        /* Only show if expanded - controlled by JS */
-        display: flex; /* Default to flex, will be hidden by JS if not expanded */
-        flex-direction: column;
-        gap: var(--spacing-md);
-    }
-    /* Show toggle button for barbers on mobile */
-    .toggle-barbers-button-mobile {
-        display: flex; /* Show the new toggle button */
-    }
-    /* Remove vertical border and padding on mobile */
-    .owner-detail-shops-info-column {
-        border-right: none;
-        padding-right: 0;
-    }
-    .owner-detail-barbers-section {
-        padding-left: 0;
-    }
+  .barbers-desktop-table {
+    display: none;
+  }
+  .barbers-mobile-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  .toggle-barbers-button-mobile {
+    display: flex;
+  }
+  .owner-detail-shops-info-column {
+    border-right: none;
+    padding-right: 0;
+  }
+  .owner-detail-barbers-section {
+    padding-left: 0;
+  }
 }
 
-/* Hide cards on desktop, show table without toggle */
 @media (min-width: 768px) {
-    .barbers-desktop-table {
-        display: block;
-        width: 95%; /* Show table on desktop */
-    }
-    .barbers-mobile-cards {
-        display: none; /* Hide cards on desktop */
-    }
-    /* Hide toggle button for barbers on desktop */
-    .toggle-barbers-button-mobile {
-        display: none;
-    }
+  .barbers-desktop-table {
+    display: block;
+    width: 95%;
+  }
+  .barbers-mobile-cards {
+    display: none;
+  }
+  .toggle-barbers-button-mobile {
+    display: none;
+  }
 }
 
-
-/* Responsive Adjustments (fine-tuning for smaller screens) */
 @media (max-width: 640px) {
-    .header-content, .main-content-inner {
-        padding: 0 var(--spacing-md);
-    }
-    .header-title {
-        font-size: var(--font-size-2xl);
-    }
-    .header-title svg {
-        width: 28px;
-        height: 28px;
-    }
-    .nav-button {
-        padding: var(--spacing-xs) var(--spacing-md);
-        font-size: var(--font-size-sm);
-    }
-    .nav-button svg {
-        width: 16px;
-        height: 16px;
-    }
-    .section-card {
-        padding: var(--spacing-lg);
-    }
-    .section-title {
-        font-size: var(--font-size-xl);
-        margin-bottom: var(--spacing-md);
-        padding-bottom: var(--spacing-sm);
-    }
-    .filter-section {
-        flex-direction: column;
-        gap: var(--spacing-sm);
-        padding: var(--spacing-md);
-    }
-    .filter-group {
-        min-width: unset;
-        width: 100%;
-    }
-    .info-card {
-        padding: var(--spacing-sm);
-    }
-    .info-card-name {
-        font-size: var(--font-size-base);
-    }
-    .info-card-name svg {
-        width: 16px;
-        height: 16px;
-    }
-    .info-card-details p {
-        font-size: var(--font-size-xs);
-    }
-    .info-card-details p svg {
-        width: 12px;
-        height: 12px;
-    }
-    .shop-card-nested {
-        padding: var(--spacing-sm);
-        margin-top: var(--spacing-sm);
-    }
-    .shop-card-title {
-        font-size: var(--font-size-base);
-    }
-    .shop-card-title svg {
-        width: 16px;
-        height: 16px;
-    }
-    .expand-button {
-        width: 28px;
-        height: 28px;
-    }
-    .expand-button svg {
-        width: 18px;
-        height: 18px;
-    }
-    .status-tag {
-        font-size: 0.6rem;
-        padding: 0.2rem 0.5rem;
-    }
-    .status-tag svg {
-        width: 12px;
-        height: 12px;
-    }
-    .data-table th, .data-table td {
-        padding: var(--spacing-sm) var(--spacing-md);
-        font-size: var(--font-size-xs);
-    }
-    .data-table th svg, .data-table td svg {
-        width: 14px;
-        height: 14px;
-    }
-    .back-button {
-        padding: var(--spacing-sm) var(--spacing-md);
-        font-size: var(--font-size-sm);
-    }
-    .back-button svg {
-        width: 16px;
-        height: 16px;
-    }
-    .detail-card-section-title {
-        font-size: var(--font-size-lg);
-    }
-    .detail-item {
-        font-size: var(--font-size-sm);
-    }
-    .detail-item svg {
-        width: 14px;
-        height: 14px;
-    }
-    .summary-card {
-        padding: var(--spacing-md);
-        gap: var(--spacing-xs);
-    }
-    .summary-card-icon {
-        padding: var(--spacing-xs);
-    }
-    .summary-card-icon svg {
-        width: 24px;
-        height: 24px;
-    }
-    .summary-card-title {
-        font-size: var(--font-size-xs);
-    }
-    .summary-card-value {
-        font-size: var(--font-size-2xl);
-    }
-    .footer-nav {
-        gap: var(--spacing-md);
-    }
-    .footer-link {
-        font-size: var(--font-size-xs);
-    }
-    .static-content h3 {
-        font-size: var(--font-size-base);
-    }
-    .static-content p, .static-content li {
-        font-size: var(--font-size-sm);
-    }
-    .barber-card {
-        padding: var(--spacing-sm);
-    }
-    .barber-card-header {
-        font-size: var(--font-size-base);
-    }
-    .barber-card-detail-item {
-        font-size: var(--font-size-xs);
-    }
+  .header-content, .main-content-inner {
+    padding: 0 var(--spacing-md);
+  }
+  .header-title {
+    font-size: var(--font-size-2xl);
+  }
+  .header-title svg {
+    width: 28px;
+    height: 28px;
+  }
+  .nav-button {
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+  .nav-button svg {
+    width: 16px;
+    height: 16px;
+  }
+  .section-card {
+    padding: var(--spacing-lg);
+  }
+  .section-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+  }
+  .filter-section {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+  }
+  .form-group {
+    min-width: unset;
+    width: 100%;
+  }
 }

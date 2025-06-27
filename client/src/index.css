@@ -1,74 +1,86 @@
-/* barbers-dev-panel/src/index.css */
+/* barbers-dev-panel/src/App.css */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
+/* CSS Variables for Black & White Theme with Accent Colors */
 :root {
-  /* Brand Colors */
-  --color-brand-primary: #5A2D82; /* Deep Purple */
-  --color-brand-secondary: #8B5FBF; /* Lighter Purple */
-  --color-brand-accent: #FFD700; /* Gold */
+  /* Base Black & White Theme - Prioritizing App.css for B&W focus */
+  --color-bg-body: #F9F9F9; /* Very light gray for overall background (softer than pure white) */
+  --color-bg-card: #FFFFFF; /* Pure white for card backgrounds */
+  --color-bg-filter: #F5F5F5; /* Very light gray for filter sections */
+  --color-bg-footer: #000000; /* Pure black for footer background */
+  --color-bg-header: #000000; /* Pure black for header background (from index.css) */
 
-  /* Grayscale Palette */
-  --color-gray-50: #F9FAFB;
-  --color-gray-100: #F3F4F6;
-  --color-gray-200: #E5E7EB;
-  --color-gray-300: #D1D5DB;
-  --color-gray-400: #9CA3AF;
-  --color-gray-500: #6B7280;
+  --color-text-default: #1A1A1A; /* Very dark gray for main text */
+  --color-text-light: #555555; /* Medium gray for secondary/less prominent text */
+  --color-text-white: #FFFFFF; /* Pure white for text on dark backgrounds (e.g., header, footer) */
+  --color-text-dark: #000000; /* Pure black for text on white backgrounds */
+
+  --border-color: #E0E0E0; /* Light gray for general borders */
+
+  /* Grayscale palette for elements that need different shades of gray - Prioritizing App.css with index.css additions */
+  --color-gray-50: #F9F9F9;   /* New lightest gray, used for body background */
+  --color-gray-100: #F0F0F0;
+  --color-gray-200: #E0E0E0;
+  --color-gray-300: #CCCCCC;
+  --color-gray-400: #AAAAAA;
+  --color-gray-500: #777777;  /* Added for more granularity in grays */
   --color-gray-600: #4B5563;
-  --color-gray-700: #374151;
-  --color-gray-800: #1F2937;
+  --color-gray-700: #333333; /* Added for dark text/elements */
+  --color-gray-800: #1a1a1a; /* Very dark gray, almost black */
   --color-gray-900: #111827;
 
-  /* Semantic Colors */
+  /* Brand and Semantic Colors (these retain their vibrancy for icons, logos, and indicators)
+     Prioritizing App.css black/dark gray for brand-primary/secondary.
+     Semantic colors from index.css are merged. */
+  --color-brand-primary: #000000; /* Black for primary brand, overriding purple from index.css */
+  --color-brand-secondary: #333333; /* Dark gray for secondary brand, overriding purple from index.css */
+  --color-brand-accent: #ffffff; /* Accent color (white) */
+
+  --color-info: #3B82F6; /* Blue for informational elements */
   --color-success: #10B981; /* Green */
   --color-warning: #F59E0B; /* Orange */
   --color-danger: #EF4444; /* Red */
-  --color-info: #3B82F6; /* Blue */
 
-  /* Backgrounds */
-  --color-bg-body: var(--color-gray-100);
-  --color-bg-card: #FFFFFF;
-  --color-bg-header: var(--color-brand-primary);
-  --color-bg-footer: var(--color-gray-900);
-  --color-bg-filter: var(--color-gray-50);
+  /* Specific owner card background colors - adjusted to be very light versions of their status colors */
+  --owner-card-fully-subscribed-bg: #EAF7ED; /* Very light green */
+  --owner-card-partially-subscribed-bg: #FEF3C7; /* Very light orange */
+  --owner-card-unsubscribed-bg: #FEE2E2; /* Very light red */
+  --owner-card-trial-bg: #DBEAFE; /* Very light blue for trial owners */
 
-  /* Text Colors */
-  --color-text-default: var(--color-gray-800);
-  --color-text-light: var(--color-gray-600);
-  --color-text-white: #FFFFFF;
+  /* Shadows - Upgraded from App.css, slightly different from index.css for softer feel */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1), 0 2px 5px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.12), 0 5px 15px rgba(0, 0, 0, 0.08);
 
-  /* Borders & Shadows */
-  --border-color: var(--color-gray-200);
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  /* Font sizes, spacing, and border radii - Prioritizing App.css with index.css additions/corrections */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem; /* Added from index.css */
 
-  /* Spacing */
-  --spacing-xs: 0.25rem; /* 4px */
-  --spacing-sm: 0.5rem;  /* 8px */
-  --spacing-md: 1rem;    /* 16px */
-  --spacing-lg: 1.5rem;  /* 24px */
-  --spacing-xl: 2rem;    /* 32px */
-  --spacing-2xl: 3rem;   /* 48px */
+  --font-light: 300; /* Added missing font-light definition */
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
 
-  /* Border Radius */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.25rem; /* Retained from App.css */
+  --spacing-xl: 1.5rem; /* Retained from App.css */
+  --spacing-2xl: 2rem; /* Retained from App.css */
+  --spacing-3xl: 3rem;
+
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
-  --radius-full: 9999px;
-
-  /* Font Sizes */
-  --font-size-xs: 0.75rem; /* 12px */
-  --font-size-sm: 0.875rem; /* 14px */
-  --font-size-base: 1rem;   /* 16px */
-  --font-size-lg: 1.125rem; /* 18px */
-  --font-size-xl: 1.25rem; /* 20px */
-  --font-size-2xl: 1.5rem; /* 24px */
-  --font-size-3xl: 1.875rem; /* 30px */
-  --font-size-4xl: 2.25rem; /* 36px */
+  --radius-full: 9999px; /* For pills/circles */
 }
 
+/* Base body styles (from index.css, adjusted variables to App.css) */
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -76,10 +88,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--color-bg-body);
   color: var(--color-text-default);
-  line-height: 1.6; /* Improved readability */
+  line-height: 1.6;
 }
 
-/* Global utility classes */
+/* Global utility classes (from index.css) */
 .container-fluid {
   width: 100%;
   padding: 0 var(--spacing-lg);
@@ -112,16 +124,718 @@ body {
 .text-center { text-align: center; }
 .text-sm { font-size: var(--font-size-sm); }
 .text-xs { font-size: var(--font-size-xs); }
-.font-bold { font-weight: 700; }
-.font-semibold { font-weight: 600; }
-.font-medium { font-weight: 500; }
+.font-bold { font-weight: var(--font-bold); }
+.font-semibold { font-weight: var(--font-semibold); }
+.font-medium { font-weight: var(--font-medium); }
 
 .rounded-lg { border-radius: var(--radius-lg); }
 .rounded-md { border-radius: var(--radius-md); }
 .rounded-sm { border-radius: var(--radius-sm); }
 .rounded-full { border-radius: var(--radius-full); }
 
-/* Buttons */
+/* Overall App Layout */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-body); /* Uses softer off-white body background */
+}
+
+/* Header */
+.app-header {
+  background: var(--color-bg-header); /* Uses pure black header background variable */
+  color: var(--color-text-white); /* White text for contrast */
+  padding: var(--spacing-md) 0;
+  box-shadow: var(--shadow-lg); /* Uses upgraded shadow */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .header-content {
+    flex-direction: row;
+    gap: var(--spacing-xl);
+  }
+}
+
+.header-title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-bold);
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin: 0;
+}
+
+.header-nav {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.nav-button {
+  background-color: transparent;
+  color: var(--color-text-white); /* White text */
+  border: 1px solid rgba(255, 255, 255, 0.4); /* Softer white border */
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-medium);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.nav-button:hover {
+  background-color: var(--color-gray-800); /* Very dark gray on hover */
+  border-color: var(--color-gray-800); /* Match border to background */
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm); /* Uses upgraded shadow */
+  color: var(--color-text-white); /* Keep white text */
+}
+
+.nav-button.active {
+  background-color: var(--color-bg-card); /* White active state */
+  color: var(--color-brand-primary); /* Black brand color for text */
+  box-shadow: var(--shadow-md); /* Uses upgraded shadow */
+  border-color: var(--color-bg-card);
+  transform: translateY(0);
+}
+
+/* Main Content Area */
+.main-content {
+  flex-grow: 1;
+  padding: var(--spacing-2xl) 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.main-content-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Standard dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0; /* Initial state for animation */
+  animation: fadeIn 0.3s forwards; /* Animation added for appearance */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background-color: var(--color-bg-card); /* White card background */
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg); /* Uses upgraded shadow */
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  z-index: 1001;
+  color: var(--color-text-default); /* Default text color for modal content */
+}
+
+/* Section Card (Main Container for the Page Content) */
+.section-card {
+  background-color: var(--color-bg-card); /* Consistent card background */
+  padding: var(--spacing-2xl); /* Increased padding for more spacious feel */
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md); /* Uses upgraded shadow */
+  margin: var(--spacing-2xl) auto; /* Increased margin for better separation */
+  max-width: 1200px;
+  width: 95%;
+  border: 1px solid var(--border-color);
+}
+
+.section-title {
+  font-size: var(--font-size-2xl); /* Slightly larger title */
+  color: var(--color-text-dark); /* Pure black for titles */
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: var(--spacing-sm);
+}
+
+/* --- Filter Section --- */
+.filter-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl); /* Increased margin bottom */
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-gray-100); /* Lighter separator */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  flex: 1;
+  min-width: 250px;
+}
+
+.form-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light); /* Medium gray for labels */
+  font-weight: var(--font-medium);
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-xs);
+}
+
+.form-input,
+.form-select {
+  padding: var(--spacing-md); /* Slightly more padding for inputs */
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md); /* Slightly more rounded */
+  font-size: var(--font-size-base);
+  color: var(--color-text-default);
+  background-color: var(--color-bg-card);
+  transition: all 0.2s ease-in-out; /* Unified transition */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.form-input::placeholder {
+  color: var(--color-gray-500); /* Better placeholder color */
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: var(--color-text-dark); /* Black border on focus */
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1); /* Subtle black ring on focus */
+  outline: none;
+}
+
+.form-select {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-md) center; /* Adjusted position */
+  background-size: 16px;
+  padding-right: var(--spacing-xl); /* Make space for the custom arrow */
+}
+
+/* --- Info Cards (Owner Cards, Dashboard Summary Cards) --- */
+.info-card {
+  background-color: var(--color-bg-card);
+  padding: var(--spacing-lg); /* Slightly more padding */
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm); /* Uses upgraded shadow */
+  border: 1px solid var(--border-color);
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+}
+
+.info-card.clickable:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md); /* Uses upgraded shadow */
+  cursor: pointer;
+  border-color: var(--color-gray-500); /* Darker border on hover */
+}
+
+.info-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-sm);
+}
+
+.info-card-name {
+  font-weight: var(--font-semibold);
+  font-size: var(--font-size-lg);
+  color: var(--color-text-dark);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.info-card-details p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.info-card-details p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Subscription Tags (New styles for black and white with subtle accents) --- */
+.subscription-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.3rem 0.7rem; /* Slightly more vertical padding */
+  border-radius: var(--radius-full); /* Pill shape */
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08); /* Subtle shadow for tags */
+}
+
+.subscription-tag.fully {
+  background-color: var(--color-brand-primary); /* Black for fully subscribed */
+  color: var(--color-text-white);
+  border: 1px solid var(--color-brand-primary);
+}
+
+.subscription-tag.partially {
+  background-color: var(--color-gray-700); /* Dark gray for partially subscribed */
+  color: var(--color-text-white);
+  border: 1px solid var(--color-gray-700);
+}
+
+.subscription-tag.trial {
+  background-color: var(--color-gray-500); /* Medium gray for trial */
+  color: var(--color-text-white);
+  border: 1px solid var(--color-gray-500);
+}
+
+.subscription-tag.unsubscribed {
+  background-color: var(--color-gray-300); /* Light gray for unsubscribed */
+  color: var(--color-text-dark); /* Dark text on light background */
+  border: 1px solid var(--color-gray-300);
+}
+
+/* Specific Card Colors for Owner List (backgrounds adjusted to very light shades, borders to accent colors) */
+.owner-card.fully-subscribed {
+  border-color: var(--color-success); /* Green border */
+  background-color: var(--owner-card-fully-subscribed-bg); /* Very light green background */
+}
+.owner-card.partially-subscribed {
+  border-color: var(--color-warning); /* Yellow border */
+  background-color: var(--owner-card-partially-subscribed-bg); /* Very light yellow background */
+}
+.owner-card.unsubscribed {
+  border-color: var(--color-danger); /* Red border */
+  background-color: var(--owner-card-unsubscribed-bg); /* Very light red background */
+}
+.owner-card.trial {
+  border-color: var(--color-info); /* Blue border */
+  background-color: var(--owner-card-trial-bg); /* Very light blue background */
+}
+
+/* --- Subsection Titles (Categorized Owners) --- */
+.subsection-owners {
+  margin-top: var(--spacing-2xl); /* Increased margin top */
+}
+
+.subsection-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--color-text-dark); /* Default dark gray */
+}
+
+/* Subtle color hints for subsection titles */
+.subsection-title.green { color: var(--color-success); border-color: var(--color-success); }
+.subsection-title.yellow { color: var(--color-warning); border-color: var(--color-warning); }
+.subsection-title.blue { color: var(--color-info); border-color: var(--color-info); }
+.subsection-title.red { color: var(--color-danger); border-color: var(--color-danger); }
+
+/* Dashboard Summary Cards */
+/* Dashboard Summary Cards */
+.summary-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+  margin-top: 32px;
+}
+
+.summary-card {
+  background: white;
+  padding: 24px;
+  /* Original padding-top was 32px, we'll ensure content starts lower */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  /* gap: 12px; Removed gap for more controlled spacing with padding */
+  border: 1px solid #e5e7eb;
+  position: relative;
+  min-height: 140px;
+  overflow: visible; /* Keep visible to allow icon to be partially outside */
+}
+
+.summary-card-icon {
+  position: absolute;
+  top: -20px; /* Keep icon partially outside on top */
+  left: 20px; /* Keep icon on the left */
+  width: 20px;
+  height: 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  z-index: 2; /* Ensure icon is above other content */
+  color: white;
+  font-size: 24px;
+}
+
+/* New class to push content down and prevent overlap */
+.summary-card-content {
+  margin-top: 40px; /* Push content down to clear the icon area */
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Added gap back for consistent spacing between text elements */
+}
+
+
+.summary-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #000000; /* Changed to black */
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  /* margin-top: 8px; No longer needed as summary-card-content handles spacing */
+}
+
+.summary-card-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000000; /* Changed to black */
+  margin: 0;
+  line-height: 1;
+}
+
+/* Professional card background colors */
+.summary-card.total-shops {
+  background: #f8fafc;
+  border-left: 4px solid #3b82f6;
+}
+
+.summary-card.active-subscriptions {
+  background: #f0fdf4;
+  border-left: 4px solid #10b981;
+}
+
+.summary-card.total-income {
+  background: #fffbeb;
+  border-left: 4px solid #f59e0b;
+}
+
+.summary-card.expired-shops {
+  background: #fef2f2;
+  border-left: 4px solid #ef4444;
+}
+
+.summary-card.owners {
+  background: #eff6ff;
+  border-left: 4px solid #6366f1;
+}
+
+.summary-card.users {
+  background: #f5f3ff;
+  border-left: 4px solid #8b5cf6;
+}
+
+/* Icon colors */
+.summary-card.total-shops .summary-card-icon {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+.summary-card.active-subscriptions .summary-card-icon {
+  background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+}
+
+.summary-card.total-income .summary-card-icon {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.summary-card.expired-shops .summary-card-icon {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.summary-card.owners .summary-card-icon {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+}
+
+.summary-card.users .summary-card-icon {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+/* Additional text styles for income card */
+.summary-card .text-sm {
+  font-size: 13px;
+  color: #000000; /* Changed to black */
+  margin-top: 4px; /* Keep specific margins if desired */
+}
+
+.summary-card .text-xs {
+  font-size: 11px;
+  margin-top: 4px; /* Keep specific margins if desired */
+  color: #000000; /* Changed to black */
+}
+
+.summary-card .text-danger {
+  color: #ef4444; /* This remains as it's a specific danger color */
+}
+/* Shop Card Nested within Owner Detail */
+.shop-card-nested {
+  background-color: var(--color-gray-50); /* Very light gray background */
+  border: 1px solid var(--border-color);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-top: var(--spacing-md);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.shop-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px dashed var(--border-color); /* Light gray dashed border */
+  margin-bottom: var(--spacing-md);
+}
+
+.shop-card-title {
+  font-weight: var(--font-semibold);
+  font-size: var(--font-size-lg);
+  color: var(--color-text-dark);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.shop-details-item {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-xs);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  line-height: 1.4;
+}
+.shop-details-item svg {
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+/* Expand/Collapse Button (if used, will adjust to theme) */
+.expand-button {
+  background: none;
+  border: none;
+  color: var(--color-brand-primary);
+  cursor: pointer;
+  font-size: var(--font-size-xl);
+  transition: transform 0.2s ease-in-out;
+  padding: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  width: 32px;
+  height: 32px;
+}
+
+.expand-button:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Subtle black hover effect */
+}
+
+.expand-button.expanded {
+  transform: rotate(90deg);
+}
+
+/* Subscription Status Tags (backgrounds are accent colors, text is white or dark for contrast) */
+.status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  text-align: center;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.08);
+}
+
+.status-active { background-color: var(--color-success); color: var(--color-text-white); }
+.status-trial { background-color: var(--color-warning); color: var(--color-gray-900); } /* Dark text for contrast on yellow/orange */
+.status-expired { background-color: var(--color-danger); color: var(--color-text-white); }
+
+/* Table Styles (re-using and ensuring consistency) */
+.data-table-container {
+  overflow-x: auto;
+  width: 100%;
+  margin-top: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  background-color: var(--color-bg-card); /* Consistent with card background */
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: var(--font-size-base);
+  min-width: 600px;
+}
+
+.data-table thead {
+  background-color: var(--color-gray-100); /* Lightest gray header background */
+  border-bottom: 1px solid var(--border-color);
+}
+
+.data-table th, .data-table td {
+  padding: var(--spacing-md) var(--spacing-lg);
+  text-align: left;
+  border-bottom: 1px solid var(--color-gray-100); /* Lighter border between rows */
+  color: var(--color-text-default); /* Default text color for cells */
+}
+
+.data-table th {
+  font-weight: var(--font-semibold);
+  color: var(--color-text-light); /* Medium gray text */
+  text-transform: uppercase;
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.05em;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: inherit;
+}
+
+.data-table tbody tr {
+  transition: background-color 0.15s ease-in-out;
+}
+
+.data-table tbody tr:hover {
+  background-color: var(--color-gray-50); /* Very light gray on hover */
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* User Table specific */
+.user-table-row {
+  cursor: pointer;
+}
+
+/* Footer */
+.app-footer {
+  background-color: var(--color-bg-footer);
+  color: var(--color-text-white);
+  padding: var(--spacing-lg) var(--spacing-md);
+  text-align: center;
+  font-size: var(--font-size-sm);
+  margin-top: auto;
+  border-top: 1px solid var(--color-gray-800);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl); /* Consolidated gap */
+  margin-bottom: var(--spacing-md);
+  flex-wrap: wrap;
+  padding: 0 var(--spacing-md);
+}
+
+.footer-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-gray-400);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-medium); /* Changed to medium for consistency */
+  transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  padding: var(--spacing-xs);
+  outline: none;
+  letter-spacing: 0.02em;
+}
+
+.footer-link:hover {
+  color: var(--color-text-white);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.footer-link:focus {
+  color: var(--color-text-white);
+  text-decoration: none;
+  outline: none;
+}
+
+.app-footer p {
+  margin: 0;
+  color: var(--color-gray-600);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-light);
+  letter-spacing: 0.01em;
+}
+
+/* Loading and Error Messages */
+.loading-message, .error-message {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-medium);
+  color: var(--color-text-light);
+}
+.error-message { color: var(--color-danger); }
+
+/* Back Button */
+.back-button {
+  margin-bottom: var(--spacing-xl);
+}
+
+/* --- Button Styling (General) --- */
+/* Merged .btn, .btn-primary, .btn-secondary, .btn-ghost from index.css,
+   prioritizing specific overrides from app-css-upgraded where present,
+   and ensuring B&W theme consistency. */
 .btn {
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: var(--radius-md);
@@ -134,74 +848,311 @@ body {
   justify-content: center;
   gap: var(--spacing-sm);
   font-size: var(--font-size-base);
-  text-decoration: none; /* For footer links behaving as buttons */
+  text-decoration: none;
 }
 
 .btn-primary {
-  background-color: var(--color-brand-primary);
+  background-color: var(--color-brand-primary); /* Black from B&W theme */
   color: var(--color-text-white);
 }
 .btn-primary:hover {
-  background-color: var(--color-brand-secondary);
+  background-color: var(--color-gray-800); /* Darker gray on hover */
   box-shadow: var(--shadow-sm);
 }
 
+/* Existing btn-secondary from app-css-upgraded is retained due to more specific styling */
 .btn-secondary {
   background-color: var(--color-gray-100);
   color: var(--color-text-default);
   border: 1px solid var(--border-color);
-}
-.btn-secondary:hover {
-  background-color: var(--color-gray-200);
+  padding: 0.6rem 1.2rem; /* Slightly more padding than generic .btn */
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
   box-shadow: var(--shadow-sm);
 }
 
-.btn-ghost {
-    background: none;
-    border: none;
-    color: var(--color-brand-primary);
-    padding: var(--spacing-xs) var(--spacing-sm);
-    font-size: var(--font-size-sm);
-}
-.btn-ghost:hover {
-    background-color: rgba(90, 45, 130, 0.1); /* Lighter purple hover */
+.btn-secondary:hover {
+  background-color: var(--color-gray-200);
+  color: var(--color-text-dark);
+  border-color: var(--color-gray-400);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
-/* Form Elements */
+.btn-secondary:focus {
+  outline: none;
+  border-color: var(--color-brand-primary); /* Black border on focus */
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary:active {
+  background-color: var(--color-gray-300);
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-ghost {
+  background: none;
+  border: none;
+  color: var(--color-brand-primary); /* Black from B&W theme */
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-sm);
+}
+.btn-ghost:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Subtle black hover effect */
+}
+
+
+/* Form Elements (prioritizing existing app-css-upgraded definitions due to more detail) */
 .form-group {
-    margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-md); /* Retained from index.css */
+  /* Other styles from app-css-upgraded retained for form-group (flex-direction, gap, flex, min-width) */
 }
 
 .form-label {
-    display: block;
-    font-weight: var(--font-medium);
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-text-light);
-    font-size: var(--font-size-sm);
+  display: block; /* Retained from index.css */
+  font-weight: var(--font-medium);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-light);
+  font-size: var(--font-size-sm);
+  /* Other styles from app-css-upgraded retained for form-label (display: flex, align-items, margin-bottom) */
 }
 
-.form-select, .form-input {
-    width: 100%;
-    padding: var(--spacing-sm) var(--spacing-md);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    background-color: var(--color-bg-card);
-    font-size: var(--font-size-base);
-    color: var(--color-text-default);
-    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    box-sizing: border-box;
+.form-select, .form-input, .form-textarea { /* Added .form-textarea for consistency */
+  width: 100%;
+  padding: var(--spacing-md); /* From app-css-upgraded */
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-card); /* White card background */
+  font-size: var(--font-size-base);
+  color: var(--color-text-default);
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-sizing: border-box; /* Ensures padding is included in element's total width/height */
 }
 
-.form-select:focus, .form-input:focus {
-    border-color: var(--color-brand-primary);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(90, 45, 130, 0.2); /* Purple focus ring */
+.form-input::placeholder {
+  color: var(--color-gray-500);
 }
 
-/* Grid Layouts */
+.form-select:focus, .form-input:focus, .form-textarea:focus {
+  border-color: var(--color-brand-primary); /* Black brand primary for focus */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2); /* Black focus ring based on new primary brand color */
+}
+
+/* Grid Layouts (from index.css) */
 .grid-cols-1 { display: grid; grid-template-columns: repeat(1, 1fr); gap: var(--spacing-md); }
 @media (min-width: 640px) { .grid-cols-2-sm { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 768px) { .grid-cols-3-md { grid-template-columns: repeat(3, 1fr); } } /* New breakpoint */
+@media (min-width: 768px) { .grid-cols-3-md { grid-template-columns: repeat(3, 1fr); } } /* Added from index.css */
 @media (min-width: 1024px) { .grid-cols-3-lg { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 1200px) { .grid-cols-4-xl { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1200px) { .grid-cols-4-xl { grid-template-columns: repeat(4, 1fr); } } /* Added from index.css */
 .col-span-full { grid-column: 1 / -1; }
+
+/* The rest of the App.css content remains the same, ensuring consistency. */
+
+/* Detail View Specific */
+.detail-card-section {
+  margin-bottom: var(--spacing-xl);
+}
+.detail-card-section-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-dark);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.detail-item {
+  font-size: var(--font-size-base);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-xs);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  line-height: 1.4;
+}
+.detail-item svg {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.detail-item .status-tag {
+  margin-left: 0;
+}
+
+/* Static Content Pages */
+.static-content h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-dark);
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.static-content p {
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-light);
+  font-size: var(--font-size-base);
+}
+
+.static-content ul {
+  list-style-type: disc;
+  padding-left: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.static-content li {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-light);
+  font-size: var(--font-size-base);
+}
+
+/* Owner Detail View - Shops & Barbers Layout */
+.owner-detail-content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+}
+
+@media (min-width: 768px) {
+  .owner-detail-content-grid {
+    grid-template-columns: 30% 70%;
+  }
+}
+
+.owner-detail-shops-info-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  align-self: start;
+  padding-right: var(--spacing-lg);
+  border-right: 1px dashed var(--border-color);
+  flex-shrink: 0;
+}
+
+.owner-detail-barbers-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  flex-grow: 1;
+  min-width: 0;
+}
+
+/* Barber Card for Mobile View */
+.barber-card {
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--border-color);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.barber-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-weight: var(--font-semibold);
+  font-size: var(--font-size-lg);
+  color: var(--color-text-dark);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.barber-card-detail-item {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.barber-card-status {
+  font-weight: var(--font-semibold);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+  .barbers-desktop-table {
+    display: none;
+  }
+  .barbers-mobile-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  .toggle-barbers-button-mobile {
+    display: flex;
+  }
+  .owner-detail-shops-info-column {
+    border-right: none;
+    padding-right: 0;
+  }
+  .owner-detail-barbers-section {
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .barbers-desktop-table {
+    display: block;
+    width: 95%;
+  }
+  .barbers-mobile-cards {
+    display: none;
+  }
+  .toggle-barbers-button-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-content, .main-content-inner {
+    padding: 0 var(--spacing-md);
+  }
+  .header-title {
+    font-size: var(--font-size-2xl);
+  }
+  .header-title svg {
+    width: 28px;
+    height: 28px;
+  }
+  .nav-button {
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+  .nav-button svg {
+    width: 16px;
+    height: 16px;
+  }
+  .section-card {
+    padding: var(--spacing-lg);
+  }
+  .section-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+  }
+  .filter-section {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+  }
+  .form-group {
+    min-width: unset;
+    width: 100%;
+  }
+}

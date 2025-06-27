@@ -1,4 +1,3 @@
-// barbers-dev-panel/src/App.js
 import React, { useState, useEffect } from 'react';
 import { LayoutDashboard, Store, Users, FileText, Shield, Wallet } from 'lucide-react';
 
@@ -153,7 +152,7 @@ function App() {
         <div className="container-content header-content">
           <h1 className="header-title">
             <LayoutDashboard size={32} strokeWidth={2.5} color="var(--color-text-white)" />
-            Dev Panel
+            Numbr
           </h1>
           <nav className="header-nav">
             <button onClick={() => setActiveView('dashboard')} className={`nav-button ${activeView === 'dashboard' ? 'active' : ''}`}>
@@ -165,8 +164,8 @@ function App() {
             <button onClick={() => setActiveView('users')} className={`nav-button ${activeView === 'users' || activeView === 'userDetail' ? 'active' : ''}`}>
               <Users size={18} color={activeView === 'users' || activeView === 'userDetail' ? "var(--color-brand-primary)" : "var(--color-text-white)"} /> Users
             </button>
-             <button onClick={() => setActiveView('subs')} className={`nav-button ${activeView === 'users' || activeView === 'subs' ? 'active' : ''}`}>
-              <Users size={18} color={activeView === 'subs' || activeView === 'subs' ? "var(--color-brand-primary)" : "var(--color-text-white)"} /> Subscription
+              <button onClick={() => setActiveView('subs')} className={`nav-button ${activeView === 'subs' ? 'active' : ''}`}> {/* FIX IS HERE */}
+              <Users size={18} color={activeView === 'subs' ? "var(--color-brand-primary)" : "var(--color-text-white)"} /> Subscription
             </button>
           </nav>
         </div>
