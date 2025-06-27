@@ -2,6 +2,11 @@
 
 import { useState } from "react"
 import { Phone, Mail, Play, Star, Telescope, Scissors, Menu, X, Facebook, Instagram, Twitter } from "lucide-react"
+import Navbar from "./Navbar"
+import Footer from './Footer';
+import ContactUs from './ContactUs';
+import Features from './Featurex';
+import Download from './Download';
 
 export default function NumbrRedesignedLanding() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -9,60 +14,11 @@ export default function NumbrRedesignedLanding() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation Bar */}
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <Scissors className="h-8 w-8 text-black" />
-              <span className="text-2xl font-bold">Numbr</span>
-            </div>
+ 
+       
+       <Navbar/>
 
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-gray-600 hover:text-black transition-colors">
-                Features
-              </a>
-              <a href="#mission" className="text-gray-600 hover:text-black transition-colors">
-                About
-              </a>
-              <a href="#contact" className="text-gray-600 hover:text-black transition-colors">
-                Contact
-              </a>
-              <button className="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors">
-                Get Started
-              </button>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200">
-            <div className="px-4 py-4 space-y-4">
-              <a href="#features" className="block text-gray-600 hover:text-black">
-                Features
-              </a>
-              <a href="#mission" className="block text-gray-600 hover:text-black">
-                About
-              </a>
-              <a href="#contact" className="block text-gray-600 hover:text-black">
-                Contact
-              </a>
-              <button className="w-full bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors">
-                Get Started
-              </button>
-            </div>
-          </div>
-        )}
-      </nav>
-
-      {/* 1. Hero Section (Black BG) - Redesigned */}
+    
       <section className="relative bg-black text-white min-h-screen overflow-hidden pt-16">
         {/* Diagonal Edge */}
         <div className="absolute top-0 left-0 w-0 h-0 border-l-[300px] border-l-transparent border-t-[300px] border-t-white opacity-10"></div>
@@ -154,38 +110,47 @@ export default function NumbrRedesignedLanding() {
         
       </section>
 
-      {/* Accent Block */}
-    <div className="h-6 bg-gradient-to-r from-black via-gray-500 to-white">
-        <svg className="w-full h-full" viewBox="0 0 400 24" preserveAspectRatio="none">
-          <path d="M0,0 Q100,24 200,0 Q300,24 400,0 L400,24 Q300,0 200,24 Q100,0 0,24 Z" fill="white" opacity="0.3" />
-        </svg>
-      </div>
-
-
-
-      {/* Accent Block */}
+  
       <div className="h-6 bg-gradient-to-r from-white via-gray-300 to-black relative">
         <svg className="w-full h-full" viewBox="0 0 400 24" preserveAspectRatio="none">
           <path d="M0,12 Q100,0 200,12 T400,12" stroke="black" strokeWidth="2" fill="none" opacity="0.3" />
         </svg>
       </div>
 
-      {/* 3. Features Wheel (Black BG) - Created with Code */}
-      <section id="features" className="relative bg-black text-white  overflow-hidden">
-        <img 
-    src="/fu.png" 
-    alt="Contact Foreground" 
-    className="w-[99vw] h-[100] object-cover z-10" 
-  />
-      </section>
+       <Features/>
 
-      {/* Accent Block */}
+         
       <div className="h-6 bg-gradient-to-r from-black via-gray-500 to-white">
         <svg className="w-full h-full" viewBox="0 0 400 24" preserveAspectRatio="none">
           <path d="M0,0 Q100,24 200,0 Q300,24 400,0 L400,24 Q300,0 200,24 Q100,0 0,24 Z" fill="white" opacity="0.3" />
         </svg>
       </div>
+        
+        <Download/>
 
+        <div className="h-6 bg-gradient-to-r from-black via-gray-500 to-white">
+        <svg className="w-full h-full" viewBox="0 0 400 24" preserveAspectRatio="none">
+          <path d="M0,0 Q100,24 200,0 Q300,24 400,0 L400,24 Q300,0 200,24 Q100,0 0,24 Z" fill="white" opacity="0.3" />
+        </svg>
+      </div>   
+
+        <ContactUs/>
+
+         <div className="h-6 bg-gradient-to-r from-white via-gray-300 to-black relative">
+        <svg className="w-full h-full" viewBox="0 0 400 24" preserveAspectRatio="none">
+          <path d="M0,12 Q100,0 200,12 T400,12" stroke="black" strokeWidth="2" fill="none" opacity="0.3" />
+        </svg>
+      </div>
+
+        <Footer/>
+
+
+
+
+    
+   
+  
+ 
 
 
 
@@ -196,60 +161,8 @@ export default function NumbrRedesignedLanding() {
   
 
 
-      <section className="relative bg-white text-black py-32 border-t-2 border-black">
-        <div className="container mx-auto px-4">
-          {/* Stats */}
-          <div className="grid md:grid-cols-3 gap-8 text-center mb-16">
-            <div className="group hover:scale-105 transition-transform">
-              <div className="text-6xl font-black text-black mb-4">5,000+</div>
-              <div className="text-xl text-gray-600 font-medium">Barbershops Served</div>
-            </div>
-            <div className="group hover:scale-105 transition-transform">
-              <div className="text-6xl font-black text-black mb-4">98%</div>
-              <div className="text-xl text-gray-600 font-medium">User Retention</div>
-            </div>
-            <div className="flex flex-col items-center group hover:scale-105 transition-transform">
-              <div className="flex items-center mb-4">
-                <div className="text-6xl font-black text-black">4.9</div>
-                <Star className="h-10 w-10 text-black ml-2 fill-current" />
-              </div>
-              <div className="text-xl text-gray-600 font-medium">Average Rating</div>
-            </div>
-          </div>
 
-          {/* Testimonials */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="text-center p-8 bg-gray-50 rounded-2xl hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">"</div>
-              <p className="text-lg text-gray-700 italic mb-6">
-                Numbr transformed our booking system completely. No more double bookings or confused customers.
-              </p>
-              <div className="font-bold text-black">- Classic Cuts, NYC</div>
-            </div>
-            <div className="text-center p-8 bg-gray-50 rounded-2xl hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">"</div>
-              <p className="text-lg text-gray-700 italic mb-6">
-                Revenue increased 40% in our first month. The payment system is seamless and professional.
-              </p>
-              <div className="font-bold text-black">- Modern Barber Co.</div>
-            </div>
-          </div>
-        </div>
-      </section>
-         
-      <div className="h-6 bg-gradient-to-r from-black via-gray-500 to-white">
-        <svg className="w-full h-full" viewBox="0 0 400 24" preserveAspectRatio="none">
-          <path d="M0,0 Q100,24 200,0 Q300,24 400,0 L400,24 Q300,0 200,24 Q100,0 0,24 Z" fill="white" opacity="0.3" />
-        </svg>
-      </div>    
-{/* 4. contact us (White BG) - Created with Code */}
-<section id="contact" className="relative bg-black text-white  flex justify-center items-center overflow-hidden">
-  <img 
-    src="/cu.png" 
-    alt="Contact Foreground" 
-    className="w-[99vw] h-[90] object-cover z-10" 
-  />
-</section>
+      
 
     </div>
   )
