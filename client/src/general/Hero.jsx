@@ -3,12 +3,12 @@
 import { useState, useEffect } from "react"
 
 const slides = [
-  { src: "https://picsum.photos/seed/schedule/200", caption: "Schedule Appointments" },
-  { src: "https://picsum.photos/seed/payments/200", caption: "Manage Payments" },
-  { src: "https://picsum.photos/seed/profiles/200", caption: "Customer Profiles" },
-  { src: "https://picsum.photos/seed/reviews/200", caption: "Track Reviews" },
-  { src: "https://picsum.photos/seed/analytics/200", caption: "Analytics Dashboard" },
-  { src: "https://picsum.photos/seed/teamwork/200", caption: "Team Collaboration" },
+  { src: "/icon2.png", caption: "Schedule Appointments" },
+  { src: "/icon2.png", caption: "Manage Payments" },
+  { src: "/icon2.png", caption: "Customer Profiles" },
+  { src: "/icon2.png", caption: "Track Reviews" },
+  { src: "/icon2.png", caption: "Analytics Dashboard" },
+  { src: "/icon2.png", caption: "Team Collaboration" },
 ]
 
 export default function HeroSection() {
@@ -148,8 +148,8 @@ export default function HeroSection() {
 
       <style jsx>{`
         .arc-image {
-          width: 280px;
-          height: 380px;
+         width: 192px;
+         height: 380px;
           border-radius: 1.5rem;
           transform-origin: 50% 200px;
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
@@ -207,7 +207,7 @@ export default function HeroSection() {
           color: #ffffff;
           font-weight: 600;
           letter-spacing: 0.02em;
-          max-width: 300px;
+          max-width: 400px;
         }
 
         @keyframes typing {
@@ -253,7 +253,7 @@ export default function HeroSection() {
 
           .typing-text {
             font-size: 1.5rem;
-            max-width: 250px;
+            max-width: 350px;
           }
 
           @keyframes enterArcMobile {

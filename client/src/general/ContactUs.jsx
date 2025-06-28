@@ -5,7 +5,7 @@ export default function ContactUs() {
   return (
     <section
       id="contact"
-      className="relative w-full min-h-screen bg-gray-100 flex items-center justify-center p-4 overflow-hidden font-sans"
+      className="relative w-full min-h-70vh bg-gray-100 flex items-center justify-center p-4 overflow-hidden font-sans"
     >
       {/* Background shapes */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
