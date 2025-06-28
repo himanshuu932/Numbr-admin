@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar({ setActiveView }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -104,22 +105,22 @@ export default function Navbar({ setActiveView }) {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+            <Link to="/" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
               Home
-            </a>
-            <a href="#" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
-              Abo
-            </a>
-            <a href="#" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
-              Services
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link to="/features" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+              Features
+            </Link>
+            <Link to="/download" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+              Download
+            </Link>
+            <Link
+              to="/contact"
               className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
               onClick={handleContactClick} // Added onClick handler
             >
-              Contact
-            </a>
+              Contact Us
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -137,22 +138,22 @@ export default function Navbar({ setActiveView }) {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <a href="#" className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+              <Link to="/" className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
                 Home
-              </a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
-                About
-              </a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
-                Services
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link href="/features" className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+                Features
+              </Link>
+              <Link href="/download" className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+                Download
+              </Link>
+              <Link
+                href="/contact"
                 className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
                 onClick={handleContactClick} // Added onClick handler for mobile
               >
-                Contact
-              </a>
+                Contact Us
+              </Link>
             </div>
           </div>
         )}

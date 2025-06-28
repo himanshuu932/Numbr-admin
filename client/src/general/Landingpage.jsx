@@ -1,5 +1,3 @@
-
-
 import { useState } from "react"
 import { Phone, Mail, Play, Star, Telescope, Scissors, Menu, X, Facebook, Instagram, Twitter } from "lucide-react"
 import Navbar from "./Navbar"
@@ -16,7 +14,7 @@ export default function NumbrRedesignedLanding({setActiveView}) {
     <div className="min-h-screen bg-white">
  
        
-       <Navbar setActiveView={setActiveView}/>
+       {/* <Navbar setActiveView={setActiveView}/> */}
 
     
       <section className="relative bg-black text-white min-h-screen overflow-hidden pt-16">
@@ -142,28 +140,7 @@ export default function NumbrRedesignedLanding({setActiveView}) {
         </svg>
       </div>
 
-        <Footer/>
-
-
-
-
-    
-   
-  
- 
-
-
-
-
-
-
-
-  
-
-
-
-      
-
+        {/* <Footer/> */}
     </div>
   )
 }
