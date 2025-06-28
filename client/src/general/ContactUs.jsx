@@ -1,4 +1,4 @@
-// client/src/general/ContactUs.js
+// client/src/general/Contact.js//
 export default function ContactUs() {
 
   return (
