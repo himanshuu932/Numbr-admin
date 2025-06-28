@@ -24,6 +24,7 @@ function App() {
       {activeView === 'dashboard' ? (
         <div className="app-container">
           <Navbar setActiveView={setActiveView} />
+          
           <Routes>
             <Route path="/" element={<NumbrLanding setActiveView={setActiveView} />} />
             <Route path="/features" element={<Features />} />
