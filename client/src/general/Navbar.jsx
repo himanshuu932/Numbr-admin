@@ -141,14 +141,14 @@ export default function Navbar({ setActiveView }) {
               <Link to="/" className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
                 Home
               </Link>
-              <Link href="/features" className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+              <Link to="/features" className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
                 Features
               </Link>
-              <Link href="/download" className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
+              <Link to="/download" className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">
                 Download
               </Link>
               <Link
-                href="/contact"
+                to="/contact"
                 className="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium"
                 onClick={handleContactClick} // Added onClick handler for mobile
               >
