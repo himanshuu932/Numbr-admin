@@ -83,7 +83,7 @@ export default function Navbar({ setActiveView }) {
   return (
     <nav className="bg-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex justify-between h-16 ml-2">
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <img
@@ -93,7 +93,7 @@ export default function Navbar({ setActiveView }) {
                 onClick={() => handleInteraction('logo')}
               />
             </div>
-            <div className="flex-shrink-0 z-10 left-">
+            <div className="flex-shrink-0 z-10 left-1">
               <h1
                 className="text-xl font-bold text-gray-800 cursor-pointer"
                 onClick={() => handleInteraction('brand')}
