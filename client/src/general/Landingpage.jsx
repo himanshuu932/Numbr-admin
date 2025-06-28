@@ -51,28 +51,7 @@ export default function NumbrRedesignedLanding({setActiveView}) {
         </svg>
       </div>
 
-        <Footer/>
-
-
-
-
-    
-   
-  
- 
-
-
-
-
-
-
-
-  
-
-
-
-      
-
+        {/* <Footer/> */}
     </div>
   )
 }
