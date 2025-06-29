@@ -40,7 +40,7 @@ function Admin() {
   // --- IMPORTANT: AUTHENTICATION ---
   // The admin routes are protected. A valid JWT token for an admin user must be sent.
   // In a real app, this token would be stored securely after a login process (e.g., in state, context, or secure storage).
-  const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWQyMzA3ODA1ZDY1MWE4NWUxMGNjYiIsImlhdCI6MTc1MDkzNDI3OSwiZXhwIjoxNzUxMjk0Mjc5fQ.WV5KnRkxKqBoBejewcth7GCoOsH43U70Y7RvRFYFQ9A'; // <--- !!! REPLACE THIS !!!
+  const authToken = localStorage.getItem('token'); // <--- !!! REPLACE THIS !!!
 
   // useEffect hook to fetch all necessary data when the component mounts
   useEffect(() => {

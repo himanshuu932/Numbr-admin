@@ -5,15 +5,34 @@ export default function Login({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+ const API_URL = "https://numbr-exq6.onrender.com";
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (username === 'admin' && password === 'admin123') {
-      onLogin();
+  const handleSubmit =async (e) =>{
+        e.preventDefault();
+    try {
+    const response = await fetch(`${API_URL}/api/admin/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: username, pass: password }),
+    });
+
+    if (response.ok) {
+     const data = await response.json();
+     const token= data.data.token;
+      localStorage.setItem('token', token); // Store token in localStorage
+      console.log('Login successful:', data);
+      onLogin(); // Call the onLogin prop to update the app state
       navigate('/admin', { replace: true });
+
     } else {
       alert('Invalid credentials');
     }
+  } catch (error) {
+    console.error('Login failed:', error);
+    alert('Login failed. Please try again.');
+  }
   };
 
   return (
@@ -28,9 +47,9 @@ export default function Login({ onLogin }) {
               Access the Numbr Admin Panel and manage everything in one place.
             </p>
             <img
-              src="/login-illustration.svg"
+              src="/barber.png"
               alt="Login Illustration"
-              className="w-56 h-56 mx-auto"
+              className="w-56 h-76 mx-auto"
             />
           </div>
         </div>
