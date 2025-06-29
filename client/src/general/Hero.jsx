@@ -121,7 +121,7 @@ export default function HeroSection() {
 
   return (
     <>
-      <section className="relative bg-black text-white min-h-[90vh] overflow-hidden">
+      <section className="relative bg-black text-white max-h-[90vh] overflow-hidden">
         {/* Enhanced Background with Gradients */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800"></div>
 
