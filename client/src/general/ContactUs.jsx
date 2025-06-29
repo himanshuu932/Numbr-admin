@@ -122,7 +122,7 @@ export default function ContactUs() {
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 text-center">Contact us</h1>
 
           <div className="w-full max-w-md space-y-6">
-            {/* LinkedIn */}
+            {/* LinkedIn
             <div className="flex items-center w-full space-x-4">
               <div className="p-3 bg-gray-900 text-white rounded-lg flex items-center justify-center shadow-lg">
                 <Linkedin className="h-6 w-6" />
@@ -134,7 +134,7 @@ export default function ContactUs() {
                   className="w-full bg-transparent outline-none text-white text-lg placeholder-gray-300"
                 />
               </div>
-            </div>
+            </div> */}
 
             {/* Email */}
             <div className="flex items-center w-full space-x-4">
