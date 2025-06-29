@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LayoutDashboard, Store, Users, FileText, Shield, Wallet } from 'lucide-react';
-
+import {Link} from 'react-router-dom';
 import './App.css';
 
 // Import components
@@ -154,18 +154,18 @@ function Admin() {
             Numbr
           </h1>
           <nav className="header-nav">
-            <button onClick={() => setActiveView('dashboard')} className={`nav-button ${activeView === 'dashboard' ? 'active' : ''}`}>
+            <Link to="/dashboard" onClick={() => setActiveView('dashboard')} className={`nav-button ${activeView === 'dashboard' ? 'active' : ''}`}>
               <LayoutDashboard size={18} color={activeView === 'dashboard' ? "var(--color-brand-primary)" : "var(--color-text-white)"} /> Dashboard
-            </button>
-            <button onClick={() => setActiveView('owners')} className={`nav-button ${activeView === 'owners' || activeView === 'ownerDetail' ? 'active' : ''}`}>
+            </Link>
+            <Link to="/owners" onClick={() => setActiveView('owners')} className={`nav-button ${activeView === 'owners' || activeView === 'ownerDetail' ? 'active' : ''}`}>
               <Store size={18} color={activeView === 'owners' || activeView === 'ownerDetail' ? "var(--color-brand-primary)" : "var(--color-text-white)"} /> Owners
-            </button>
-            <button onClick={() => setActiveView('users')} className={`nav-button ${activeView === 'users' || activeView === 'userDetail' ? 'active' : ''}`}>
+            </Link>
+            <Link to="/users" onClick={() => setActiveView('users')} className={`nav-button ${activeView === 'users' || activeView === 'userDetail' ? 'active' : ''}`}>
               <Users size={18} color={activeView === 'users' || activeView === 'userDetail' ? "var(--color-brand-primary)" : "var(--color-text-white)"} /> Users
-            </button>
-              <button onClick={() => setActiveView('subs')} className={`nav-button ${activeView === 'subs' ? 'active' : ''}`}> {/* FIX IS HERE */}
+            </Link>
+              <Link to="/subscription" onClick={() => setActiveView('subs')} className={`nav-button ${activeView === 'subs' ? 'active' : ''}`}> {/* FIX IS HERE */}
               <Users size={18} color={activeView === 'subs' ? "var(--color-brand-primary)" : "var(--color-text-white)"} /> Subscription
-            </button>
+            </Link>
           </nav>
         </div>
       </header>

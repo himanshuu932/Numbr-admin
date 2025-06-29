@@ -14,8 +14,11 @@ import NumbrLanding from './general/Landingpage';
 import Features from './general/Featurex';
 import ContactUs from './general/ContactUs';
 import Download from './general/Download';
-
 import Login from './general/Login';
+import DashboardView from './admin/components/DashboardView';
+import ShopOwnersView from './admin/components/ShopOwnersView';
+import UsersView from './admin/components/UsersView';
+import SubsView from './admin/components/SubsView';
 
 function App() {
   const [activeView, setActiveView] = useState('dashboard');
@@ -30,7 +33,15 @@ function App() {
     <Router>
       {activeView === 'admin' ? (
         isAuthenticated ? (
-          <Admin />
+          <div>
+            <Admin setActiveView={setActiveView}/>
+          <Routes>
+            <Route path='/dashboard' element={<DashboardView/>}/>
+            <Route path='/owners' element={<ShopOwnersView/>}/>
+            <Route path='/users' element={<UsersView/>}/>
+            <Route path='/subscription' element={<SubsView/>}/>
+          </Routes>
+          </div>
         ) : (
           <Navigate to="/login" replace />
         )

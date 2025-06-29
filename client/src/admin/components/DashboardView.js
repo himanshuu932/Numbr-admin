@@ -4,7 +4,7 @@ import React from 'react';
 import { Store, Users, DollarSign, CalendarX, BarChart3, TrendingUp, User, Building, Clock, CheckCircle, XCircle } from 'lucide-react';
 
 // MODIFIED: Added allOwners to the destructured props
-const DashboardView = ({ allShops, allUsers, allSubscriptions, allOwners }) => {
+const DashboardView = ({ allShops=[], allUsers=[], allSubscriptions=[], allOwners=[] }) => {
     // --- Overall Counts ---
     const totalShops = allShops.length;
     const totalUsers = allUsers.length;

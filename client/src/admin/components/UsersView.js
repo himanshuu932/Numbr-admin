@@ -4,7 +4,7 @@ import { Users, Filter, User, Phone, Calendar, CircleCheck } from 'lucide-react'
 import SubscriptionTag from './SubscriptionTag';
 
 // Component to display Users information (List View)
-function UsersView({ users, onSelectUser }) {
+function UsersView({ users=[], onSelectUser=[] }) {
   const [userSubscriptionFilter, setUserSubscriptionFilter] = useState('all');
 
   const filteredUsers = users.filter(user => {

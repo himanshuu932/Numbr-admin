@@ -6,7 +6,7 @@ import SubscriptionTag from './SubscriptionTag';
 import OwnerDetailView from './OwnerDetailView'; // Import the OwnerDetailView component
 
 // Component to display Shop Owners information (List View)
-function ShopOwnersView({ owners, onSelectOwner }) {
+function ShopOwnersView({ owners=[], onSelectOwner=[] }) {
   const [ownerFilter, setOwnerFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
    // State for modal visibility
