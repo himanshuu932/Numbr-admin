@@ -2,9 +2,9 @@
 
 import { useState } from "react"
 import { Scissors, Menu, X, Facebook, Instagram, Twitter } from "lucide-react"
-
+import { useNavigate } from "react-router-dom"
 export default function Footer() {
-
+  const navigate = useNavigate();
   return (
 
       <footer className="bg-black text-white py-16">
@@ -54,25 +54,27 @@ export default function Footer() {
               <h4 className="text-xl font-bold mb-6">Support</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  <a href="/contact" className="text-gray-300 hover:text-white transition-colors">
                     Help Center
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <li   className="text-gray-300 hover:text-white transition-colors">
+                  <a href="/privacy" >
                     Privacy Policy
+                      </a>
+                </li>
+                  <li>
+                  <a href="/refund" className="text-gray-300 hover:text-white transition-colors">
+                   Refund Policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  <a href="/terms" className="text-gray-300 hover:text-white transition-colors">
                     Terms of Service
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                    Documentation
-                  </a>
-                </li>
+              
+               
               </ul>
             </div>
           </div>

@@ -144,7 +144,7 @@ export default function ContactUs() {
               <div className="flex-grow bg-gray-500 rounded-full px-4 py-3 shadow-inner">
                 <input
                   type="email"
-                  placeholder="xxx2@gmail.com"
+                  placeholder="bludgers52@gmail.com"
                   className="w-full bg-transparent outline-none text-white text-lg placeholder-gray-200"
                 />
               </div>
