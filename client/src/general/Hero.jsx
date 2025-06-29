@@ -127,9 +127,9 @@ export default function HeroSection() {
 
         {/* Diagonal Edge */}
         <div className="absolute top-0 left-0 w-0 h-0 border-l-[200px] md:border-l-[300px] border-l-transparent border-t-[200px] md:border-t-[300px] border-t-white opacity-10"></div>
-
+      
         {/* Decorative X Clusters */}
-        <div className="absolute top-16 md:top-32 right-10 md:right-20 opacity-20">
+        <div className="absolute top-16 md:top-32 right-10 md:right-20 opacity-20 c1">
           <div className="grid grid-cols-4 md:grid-cols-6 gap-1 md:gap-2">
             {Array.from({ length: 16 }).map((_, i) => (
               <div
@@ -142,7 +142,35 @@ export default function HeroSection() {
             ))}
           </div>
         </div>
-
+  
+       <div className="absolute top-10 left-10  opacity-20 c2">
+          <div className="grid grid-cols-4 md:grid-cols-6 gap-1 md:gap-2">
+            {Array.from({ length: 16 }).map((_, i) => (
+              <div
+                key={i}
+                className="text-white text-sm md:text-lg font-bold animate-pulse"
+                style={{ animationDelay: `${i * 0.1}s` }}
+              >
+                ×
+              </div>
+            ))}
+          </div>
+        </div>
+         <div className="absolute bottom-10 md:10 left-10  opacity-20 c3">
+          <div className="grid grid-cols-4 md:grid-cols-6 gap-1 md:gap-2">
+            {Array.from({ length: 16 }).map((_, i) => (
+              <div
+                key={i}
+                className="text-white text-sm md:text-lg font-bold animate-pulse"
+                style={{ animationDelay: `${i * 0.1}s` }}
+              >
+                ×
+              </div>
+            ))}
+          </div>
+        </div>
+         
+           
         {/* Diagonal Drip Shapes */}
         <div className="absolute bottom-0 right-0 w-48 h-48 md:w-96 md:h-96 opacity-10">
           <svg viewBox="0 0 200 200" className="w-full h-full">
