@@ -4,19 +4,19 @@ import { useState, useEffect } from "react"
 
 const slides = [
   {
-    src: "/icon2.png",
+    src: "/icon3.png",
     caption: "Schedule Appointments",
     lines: ["Schedule", "Appointments"],
   },
   {
-    src: "/icon2.png",
-    caption: "Manage Payments",
-    lines: ["Manage", "Payments"],
+    src: "/icon4.png",
+    caption: "Manage Queues",
+    lines: ["Manage", "Queues"],
   },
   {
-    src: "/icon2.png",
-    caption: "Customer Profiles",
-    lines: ["Customer", "Profiles"],
+    src: "/icon5.png",
+    caption: "Gain Reach",
+    lines: ["Gain", "Reach"],
   },
   {
     src: "/icon2.png",
@@ -24,14 +24,14 @@ const slides = [
     lines: ["Track", "Reviews"],
   },
   {
-    src: "/icon2.png",
+    src: "/icon1.png",
     caption: "Analytics Dashboard",
     lines: ["Analytics", "Dashboard"],
   },
   {
-    src: "/icon2.png",
-    caption: "Team Collaboration",
-    lines: ["Team", "Collaboration"],
+    src: "/icon6.png",
+    caption: "Loyal Customers",
+    lines: ["Loyal", "Customers"],
   },
 ]
 
@@ -334,6 +334,7 @@ export default function HeroSection() {
 
         <style jsx>
           {`
+         
   /* Extra Small Mobile - 480px and below */
 @media (max-width: 480px) {
   .mobile-phone-container {
@@ -355,6 +356,9 @@ export default function HeroSection() {
   }
   
   .mobile-description {
+  text-align: justify;
+  max-width:68%;
+
     font-size: 1.125rem; /* text-lg */
   }
   
@@ -438,6 +442,8 @@ export default function HeroSection() {
   }
   
   .mobile-description {
+  text-align: justify;
+  max-width:80%;
     font-size: 1.1rem; /* text-xl */
   }
   
@@ -515,6 +521,8 @@ export default function HeroSection() {
   }
   
   .mobile-description {
+  text-align: justify;
+  max-width:75%;
     font-size: 1.5rem; /* text-2xl */
   }
   
@@ -598,6 +606,8 @@ export default function HeroSection() {
   }
   
   .mobile-description {
+  text-align: justify;
+  max-width:58%;
     font-size: 1.5rem; /* text-2xl */
   }
   
@@ -673,7 +683,7 @@ export default function HeroSection() {
   }
 
   .arc-image.paused {
-    transform: rotate(0deg) translateY(-200px);
+    transform: rotate(0deg) translateY(-230px);
   }
 
   .arc-image.exiting {
@@ -682,12 +692,12 @@ export default function HeroSection() {
 
   @keyframes enterArcDesktop {
     from {
-      transform: rotate(-90deg) translateY(-200px);
+      transform: rotate(-90deg) translateY(-230px);
       opacity: 0;
       scale: 0.8;
     }
     to {
-      transform: rotate(0deg) translateY(-200px);
+      transform: rotate(0deg) translateY(-230px);
       opacity: 1;
       scale: 1;
     }
@@ -695,12 +705,12 @@ export default function HeroSection() {
 
   @keyframes exitArcDesktop {
     from {
-      transform: rotate(0deg) translateY(-200px);
+      transform: rotate(0deg) translateY(-230px);
       opacity: 1;
       scale: 1;
     }
     to {
-      transform: rotate(90deg) translateY(-200px);
+      transform: rotate(90deg) translateY(-230px);
       opacity: 0;
       scale: 0.8;
     }
