@@ -65,7 +65,7 @@ export default function Download() {
             <h2 className="text-3xl font-bold mb-6 text-gray-900">Scan to Download</h2>
             <div className="bg-white p-6 rounded-xl shadow-lg border-4 border-gray-200 transform hover:scale-105 transition-transform duration-300">
               <img
-                src="https://placehold.co/250x250/000000/FFFFFF?text=QR+Code"
+                src="/mmmut.png"
                 alt="QR Code to download app"
                 className="w-64 h-64 rounded-lg object-contain"
               />
