@@ -13,6 +13,7 @@ import Footer from './general/Footer';
 import NumbrLanding from './general/Landingpage';
 import Features from './general/Featurex';
 import ContactUs from './general/ContactUs';
+import AboutUs from './general/AboutUs';
 import Download from './general/Download';
 import Login from './general/Login';
 
@@ -62,6 +63,7 @@ function App() {
             <Route path="/features" element={<Features />} />
             <Route path="/download" element={<Download />} />
             <Route path="/contact" element={<ContactUs />} />
+            <Route path="/aboutUs" element={<AboutUs/>}/>
             <Route path="/terms" element={<TermsAndConditions />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/refund" element={<CancellationRefundPolicy />} />
