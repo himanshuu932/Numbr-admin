@@ -15,6 +15,7 @@ import Features from './general/Featurex';
 import ContactUs from './general/ContactUs';
 import Download from './general/Download';
 import Login from './general/Login';
+import PricingPage from './general/Pricing';
 
 function App() {
   const [activeView, setActiveView] = useState('dashboard');
@@ -63,6 +64,7 @@ function App() {
             <Route path="/download" element={<Download />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/terms" element={<TermsAndConditions />} />
+             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/refund" element={<CancellationRefundPolicy />} />
             <Route path="/login" element={<Login onLogin={handleLogin} />} />
