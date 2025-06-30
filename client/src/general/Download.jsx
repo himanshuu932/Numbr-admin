@@ -24,7 +24,7 @@ export default function Download() {
             <h2 className="text-2xl font-bold mb-4 text-gray-900">Scan to Download</h2>
             <div className="bg-white p-4 rounded-xl shadow-lg border-4 border-gray-200 transform hover:scale-105 transition-transform duration-300">
               <img
-                src="/mmmut.png"
+                src="/MMMUT.png"
                 alt="QR Code to download app"
                 className="w-48 h-48 rounded-lg object-contain"
               />
