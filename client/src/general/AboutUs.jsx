@@ -181,7 +181,7 @@ export default function AboutUs() {
           {/* Stats */}
           <div className="flex flex-wrap justify-center gap-6 mt-8">
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-900">50+</div>
+              <div className="text-3xl font-bold text-blue-900">20+</div>
               <div className="text-gray-600">Projects</div>
             </div>
             <div className="text-center">
@@ -189,7 +189,7 @@ export default function AboutUs() {
               <div className="text-gray-600">Team Members</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-900">100%</div>
+              <div className="text-3xl font-bold text-blue-900">1000%</div>
               <div className="text-gray-600">Dedication</div>
             </div>
           </div>
