@@ -27,7 +27,7 @@ export default function Footer() {
               <h4 className="text-xl font-bold mb-6">Quick Links</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="#features" className="text-gray-300 hover:text-white transition-colors">
+                  <a href="/features" className="text-gray-300 hover:text-white transition-colors">
                     Features
                   </a>
                 </li>
@@ -37,12 +37,12 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="text-gray-300 hover:text-white transition-colors">
+                  <a href="/contact" className="text-gray-300 hover:text-white transition-colors">
                     Contact
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  <a href="/pricing" className="text-gray-300 hover:text-white transition-colors">
                     Pricing
                   </a>
                 </li>

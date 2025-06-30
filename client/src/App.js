@@ -16,6 +16,7 @@ import ContactUs from './general/ContactUs';
 import AboutUs from './general/AboutUs';
 import Download from './general/Download';
 import Login from './general/Login';
+import PricingPage from './general/Pricing';
 
 function App() {
   const [activeView, setActiveView] = useState('dashboard');
@@ -65,6 +66,7 @@ function App() {
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/aboutUs" element={<AboutUs/>}/>
             <Route path="/terms" element={<TermsAndConditions />} />
+             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/refund" element={<CancellationRefundPolicy />} />
             <Route path="/login" element={<Login onLogin={handleLogin} />} />
