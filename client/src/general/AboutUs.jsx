@@ -6,6 +6,9 @@ import { useState, useRef, useEffect } from "react"
 export default function AboutUs() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const cardRef = useRef(null)
+  const [projectCount, setProjectCount] = useState(0)
+  const [teamCount, setTeamCount] = useState(0)
+  const [dedicationCount, setDedicationCount] = useState(0)
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -25,10 +28,34 @@ export default function AboutUs() {
     }
   }, [])
 
+  // Count up animation effect
+  useEffect(() => {
+    const duration = 2000 // 2 seconds
+    const startTime = Date.now()
+    
+    const animateCount = () => {
+      const progress = Math.min(1, (Date.now() - startTime) / duration)
+      
+      setProjectCount(Math.floor(progress * 20))
+      setTeamCount(Math.floor(progress * 10))
+      setDedicationCount(Math.floor(progress * 100))
+      
+      if (progress < 1) {
+        requestAnimationFrame(animateCount)
+      } else {
+        setProjectCount(20)
+        setTeamCount(10)
+        setDedicationCount(1000)
+      }
+    }
+    
+    animateCount()
+  }, [])
+
   return (
     <section
       id="about"
-      className="relative w-full min-h-[75vh] bg-gray-200 flex items-center justify-center p-4 pb-14 overflow-hidden font-sans" // Increased min-h and added pb
+      className="relative w-full min-h-[calc(100vh-6rem)] py-8 bg-gray-200 flex items-center justify-center p-4 overflow-hidden font-sans"
     >
       {/* Geometric background shapes with light effects - black and white version */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
@@ -99,7 +126,7 @@ export default function AboutUs() {
       {/* Main content card with magnetic cursor effect */}
       <div
         ref={cardRef}
-        className="relative z-10 bg-white/95 backdrop-blur-sm shadow-xl rounded-2xl p-6 md:p-8 lg:p-10 flex flex-col items-center justify-center w-full max-w-2xl mx-auto border border-gray-300/50 hover:shadow-2xl transition-all duration-500 group overflow-hidden mb-14" // Added mb-16 for bottom margin
+        className="relative z-10 bg-white/95 backdrop-blur-sm shadow-xl rounded-2xl p-6 md:p-8 lg:p-10 flex flex-col items-center justify-center w-full max-w-2xl mx-auto border border-gray-300/50 hover:shadow-2xl transition-all duration-500 group overflow-hidden"
         style={{
           transform: `perspective(1000px) rotateX(${(mousePosition.y - 200) * 0.02}deg) rotateY(${(mousePosition.x - 300) * 0.02}deg)`,
         }}
@@ -181,15 +208,15 @@ export default function AboutUs() {
           {/* Stats */}
           <div className="flex flex-wrap justify-center gap-6 mt-8">
             <div className="text-center">
-              <div className="text-3xl font-bold text-black">20+</div>
+              <div className="text-3xl font-bold text-black">{projectCount}+</div>
               <div className="text-gray-600">Projects</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-black">10+</div>
+              <div className="text-3xl font-bold text-black">{teamCount}+</div>
               <div className="text-gray-600">Team Members</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-black">1000%</div>
+              <div className="text-3xl font-bold text-black">{dedicationCount}%</div>
               <div className="text-gray-600">Dedication</div>
             </div>
           </div>
