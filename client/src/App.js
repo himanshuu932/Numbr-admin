@@ -22,19 +22,6 @@ function App() {
   const [activeView, setActiveView] = useState('dashboard');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // 🔁 Remove token every 3 minutes and on mount
-  useEffect(() => {
-    const removeToken = () => {
-      localStorage.removeItem('token'); // change key if different
-      console.log('Token removed from localStorage');
-    };
-
-    removeToken(); // on mount
-
-    const interval = setInterval(removeToken, 3 * 60 * 1000); // every 3 minutes
-
-    return () => clearInterval(interval); // cleanup
-  }, []);
 
   const handleLogin = () => {
     setIsAuthenticated(true);

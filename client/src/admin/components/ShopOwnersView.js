@@ -1,18 +1,13 @@
-// barbers-dev-panel/src/components/ShopOwnersView.js
-
 import React, { useState } from 'react';
 import { Store, User, Phone, Building, Filter, Search } from 'lucide-react';
 import SubscriptionTag from './SubscriptionTag';
-import OwnerDetailView from './OwnerDetailView'; // Import the OwnerDetailView component
+import OwnerDetailView from './OwnerDetailView';
 
-// Component to display Shop Owners information (List View)
-function ShopOwnersView({ owners=[], onSelectOwner=[] }) {
+function ShopOwnersView({ owners = [], onSelectOwner = [] }) {
   const [ownerFilter, setOwnerFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
-   // State for modal visibility
-  const [selectedOwner, setSelectedOwner] = useState(null); // State for selected owner object
+  const [selectedOwner, setSelectedOwner] = useState(null);
 
-  // Function to categorize owners based on shops data and apply filter
   const getCategorizedAndFilteredOwners = () => {
     const categorized = {
       fullySubscribed: [],
@@ -32,7 +27,6 @@ function ShopOwnersView({ owners=[], onSelectOwner=[] }) {
       }
 
       const ownerShops = owner.shops;
-
       let ownerSubscriptionStatus = 'unsubscribed';
 
       if (ownerShops.length > 0) {
@@ -55,10 +49,9 @@ function ShopOwnersView({ owners=[], onSelectOwner=[] }) {
       const ownerWithDetails = {
         ...owner,
         subscriptionStatus: ownerSubscriptionStatus,
-        // Ensure shopsDetails is correctly populated here if owner.shops already has barbers
         shopsDetails: ownerShops.map(shop => ({
           ...shop,
-          barbersInShop: shop.barbers || [] // Ensure barbersInShop is an array
+          barbersInShop: shop.barbers || []
         }))
       };
 
@@ -82,45 +75,41 @@ function ShopOwnersView({ owners=[], onSelectOwner=[] }) {
   };
 
   const { fullySubscribed, partiallySubscribed, unsubscribed, trial } = getCategorizedAndFilteredOwners();
-
   const totalFilteredOwners = fullySubscribed.length + partiallySubscribed.length + unsubscribed.length + trial.length;
 
-  // Handler to open the modal and set the selected owner object
   const handleSelectOwner = (owner) => {
     setSelectedOwner(owner);
     onSelectOwner(owner);
-    console.log(owner)
+
   };
 
-
-
   return (
-    <div className="section-card">
-      <h2 className="section-title">
-        <Store size={22} color="var(--color-brand-primary)" /> Shop Owners
+    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <h2 className="flex items-center text-xl font-semibold text-gray-900 mb-6">
+        <Store size={22} className="text-blue-600 mr-2" /> Shop Owners
       </h2>
 
-      <div className="filter-section">
-        <div className="form-group filter-group">
-          <label htmlFor="ownerSearch" className="form-label">
-            <Search size={14} color="var(--color-text-light)" style={{ marginRight: '0.4rem' }} />Search Owners:
+      <div className="flex flex-col sm:flex-row gap-4 mb-6">
+        <div className="flex-1">
+          <label htmlFor="ownerSearch" className="flex items-center text-sm font-medium text-gray-700 mb-2">
+            <Search size={14} className="text-gray-400 mr-2" />Search Owners
           </label>
           <input
             id="ownerSearch"
             type="text"
-            className="form-input"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
             placeholder="Search by name or phone..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <div className="form-group filter-group">
-          <label htmlFor="ownerFilter" className="form-label">
-            <Filter size={14} color="var(--color-text-light)" style={{ marginRight: '0.4rem' }} />Filter by Subscription:
+        <div className="flex-1">
+          <label htmlFor="ownerFilter" className="flex items-center text-sm font-medium text-gray-700 mb-2">
+            <Filter size={14} className="text-gray-400 mr-2" />Filter by Subscription
           </label>
           <select
             id="ownerFilter"
-            className="form-select"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
             value={ownerFilter}
             onChange={(e) => setOwnerFilter(e.target.value)}
           >
@@ -134,46 +123,43 @@ function ShopOwnersView({ owners=[], onSelectOwner=[] }) {
       </div>
 
       {totalFilteredOwners === 0 && (
-        <p className="text-gray-500 text-center" style={{ marginTop: '1.5rem' }}>No owners found matching the current filters.</p>
-      )}
-
-      {fullySubscribed.length > 0 && (
-        <div className="subsection-owners">
-          <h3 className="subsection-title green">Fully Subscribed Owners ({fullySubscribed.length})</h3>
-          <div className="grid-cols-1 grid-cols-2-sm grid-cols-3-lg">
-            {fullySubscribed.map(owner => (
-              <div key={owner._id} className="info-card owner-card fully-subscribed clickable" onClick={() => handleSelectOwner(owner)}>
-                <div className="info-card-header">
-                    <p className="info-card-name">
-                        <User size={18} color="var(--color-text-default)" /> {owner.name}
-                    </p>
-                    <SubscriptionTag status={owner.subscriptionStatus} />
-                </div>
-                <div className="info-card-details">
-                    <p><Phone size={14} color="var(--color-text-light)" style={{ marginRight: '0.4rem', verticalAlign: 'middle' }} />Phone: {owner.phone}</p>
-                    <p><Building size={14} color="var(--color-text-light)" style={{ marginRight: '0.4rem', verticalAlign: 'middle' }} />Total Shops: {owner.shopsDetails.length}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <p className="text-gray-500 text-center mt-6">No owners found matching the current filters.</p>
       )}
 
       {partiallySubscribed.length > 0 && (
-        <div className="subsection-owners">
-          <h3 className="subsection-title yellow">Partially Subscribed Owners ({partiallySubscribed.length})</h3>
-          <div className="grid-cols-1 grid-cols-2-sm grid-cols-3-lg">
+        <div className="mb-8">
+          <h3 className="flex items-center text-lg font-medium text-orange-600 mb-4">
+            <div className="w-3 h-3 bg-orange-400 rounded-full mr-2"></div>
+            Partially Subscribed Owners ({partiallySubscribed.length})
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {partiallySubscribed.map(owner => (
-              <div key={owner._id} className="info-card owner-card partially-subscribed clickable" onClick={() => handleSelectOwner(owner)}>
-                <div className="info-card-header">
-                    <p className="info-card-name">
-                        <User size={18} color="var(--color-text-default)" /> {owner.name}
-                    </p>
-                    <SubscriptionTag status={owner.subscriptionStatus} />
+              <div 
+                key={owner._id} 
+                className="bg-white border-2 border-orange-200 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow"
+                onClick={() => handleSelectOwner(owner)}
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-center">
+                    <div className="w-8 h-8 bg-orange-400 rounded-full flex items-center justify-center mr-3">
+                      <User size={16} className="text-white" />
+                    </div>
+                    <span className="font-medium text-gray-900">{owner.name}</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-500">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full mr-1"></div>
+                    N/A
+                  </div>
                 </div>
-                <div className="info-card-details">
-                    <p><Phone size={14} color="var(--color-text-light)" style={{ marginRight: '0.4rem', verticalAlign: 'middle' }} />Phone: {owner.phone}</p>
-                    <p><Building size={14} color="var(--color-text-light)" style={{ marginRight: '0.4rem', verticalAlign: 'middle' }} />Total Shops: {owner.shopsDetails.length}</p>
+                <div className="space-y-2 text-sm text-gray-600">
+                  <div className="flex items-center">
+                    <Phone size={14} className="text-gray-400 mr-2" />
+                    Phone:
+                  </div>
+                  <div className="flex items-center">
+                    <Building size={14} className="text-gray-400 mr-2" />
+                    Total Shops: {owner.shopsDetails.length}
+                  </div>
                 </div>
               </div>
             ))}
@@ -182,20 +168,39 @@ function ShopOwnersView({ owners=[], onSelectOwner=[] }) {
       )}
 
       {trial.length > 0 && (
-        <div className="subsection-owners">
-          <h3 className="subsection-title blue">Owners in Trial ({trial.length})</h3>
-          <div className="grid-cols-1 grid-cols-2-sm grid-cols-3-lg">
+        <div className="mb-8">
+          <h3 className="flex items-center text-lg font-medium text-blue-600 mb-4">
+            <div className="w-3 h-3 bg-blue-400 rounded-full mr-2"></div>
+            Owners in Trial ({trial.length})
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {trial.map(owner => (
-              <div key={owner._id} className="info-card owner-card trial clickable" onClick={() => handleSelectOwner(owner)}>
-                <div className="info-card-header">
-                    <p className="info-card-name">
-                        <User size={18} color="var(--color-text-default)" /> {owner.name}
-                    </p>
-                    <SubscriptionTag status={owner.subscriptionStatus} />
+              <div 
+                key={owner._id} 
+                className="bg-white border-2 border-blue-200 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow"
+                onClick={() => handleSelectOwner(owner)}
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-center">
+                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+                      <User size={16} className="text-white" />
+                    </div>
+                    <span className="font-medium text-gray-900">{owner.name}</span>
+                  </div>
+                  <div className="flex items-center text-sm text-blue-600 bg-blue-50 px-2 py-1 rounded">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full mr-1"></div>
+                    Trial
+                  </div>
                 </div>
-                <div className="info-card-details">
-                    <p><Phone size={14} color="var(--color-text-light)" style={{ marginRight: '0.4rem', verticalAlign: 'middle' }} />Phone: {owner.phone}</p>
-                    <p><Building size={14} color="var(--color-text-light)" style={{ marginRight: '0.4rem', verticalAlign: 'middle' }} />Total Shops: {owner.shopsDetails.length}</p>
+                <div className="space-y-2 text-sm text-gray-600">
+                  <div className="flex items-center">
+                    <Phone size={14} className="text-gray-400 mr-2" />
+                    Phone:
+                  </div>
+                  <div className="flex items-center">
+                    <Building size={14} className="text-gray-400 mr-2" />
+                    Total Shops: {owner.shopsDetails.length}
+                  </div>
                 </div>
               </div>
             ))}
@@ -204,20 +209,39 @@ function ShopOwnersView({ owners=[], onSelectOwner=[] }) {
       )}
 
       {unsubscribed.length > 0 && (
-        <div>
-          <h3 className="subsection-title red">Unsubscribed Owners ({unsubscribed.length})</h3>
-          <div className="grid-cols-1 grid-cols-2-sm grid-cols-3-lg">
+        <div className="mb-8">
+          <h3 className="flex items-center text-lg font-medium text-red-600 mb-4">
+            <div className="w-3 h-3 bg-red-400 rounded-full mr-2"></div>
+            Unsubscribed Owners ({unsubscribed.length})
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {unsubscribed.map(owner => (
-              <div key={owner._id} className="info-card owner-card unsubscribed clickable" onClick={() => handleSelectOwner(owner)}>
-                <div className="info-card-header">
-                    <p className="info-card-name">
-                        <User size={18} color="var(--color-text-default)" /> {owner.name}
-                    </p>
-                    <SubscriptionTag status={owner.subscriptionStatus} />
+              <div 
+                key={owner._id} 
+                className="bg-white border-2 border-red-200 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow"
+                onClick={() => handleSelectOwner(owner)}
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-center">
+                    <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center mr-3">
+                      <User size={16} className="text-white" />
+                    </div>
+                    <span className="font-medium text-gray-900">{owner.name}</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-500">
+                    <div className="w-2 h-2 bg-gray-400 rounded-full mr-1"></div>
+                    N/A
+                  </div>
                 </div>
-                <div className="info-card-details">
-                    <p><Phone size={14} color="var(--color-text-light)" style={{ marginRight: '0.4rem', verticalAlign: 'middle' }} />Phone: {owner.phone}</p>
-                    <p><Building size={14} color="var(--color-text-light)" style={{ marginRight: '0.4rem', verticalAlign: 'middle' }} />Total Shops: {owner.shopsDetails.length}</p>
+                <div className="space-y-2 text-sm text-gray-600">
+                  <div className="flex items-center">
+                    <Phone size={14} className="text-gray-400 mr-2" />
+                    Phone:
+                  </div>
+                  <div className="flex items-center">
+                    <Building size={14} className="text-gray-400 mr-2" />
+                    Total Shops: {owner.shopsDetails.length}
+                  </div>
                 </div>
               </div>
             ))}
@@ -225,7 +249,43 @@ function ShopOwnersView({ owners=[], onSelectOwner=[] }) {
         </div>
       )}
 
-  
+      {fullySubscribed.length > 0 && (
+        <div className="mb-8">
+          <h3 className="flex items-center text-lg font-medium text-green-600 mb-4">
+            <div className="w-3 h-3 bg-green-400 rounded-full mr-2"></div>
+            Fully Subscribed Owners ({fullySubscribed.length})
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {fullySubscribed.map(owner => (
+              <div 
+                key={owner._id} 
+                className="bg-white border-2 border-green-200 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow"
+                onClick={() => handleSelectOwner(owner)}
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-center">
+                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                      <User size={16} className="text-white" />
+                    </div>
+                    <span className="font-medium text-gray-900">{owner.name}</span>
+                  </div>
+                  <SubscriptionTag status={owner.subscriptionStatus} />
+                </div>
+                <div className="space-y-2 text-sm text-gray-600">
+                  <div className="flex items-center">
+                    <Phone size={14} className="text-gray-400 mr-2" />
+                    Phone: {owner.phone}
+                  </div>
+                  <div className="flex items-center">
+                    <Building size={14} className="text-gray-400 mr-2" />
+                    Total Shops: {owner.shopsDetails.length}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -5,7 +5,7 @@ export default function Login({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
- const API_URL = "https://numbr-exq6.onrender.com";
+ const API_URL = "http://localhost:5000";
 
   const handleSubmit =async (e) =>{
         e.preventDefault();
@@ -24,7 +24,7 @@ export default function Login({ onLogin }) {
       localStorage.setItem('token', token); // Store token in localStorage
       console.log('Login successful:', data);
       onLogin(); // Call the onLogin prop to update the app state
-      navigate('/admin', { replace: true });
+     
 
     } else {
       alert('Invalid credentials');
