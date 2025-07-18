@@ -86,15 +86,15 @@ export default function Footer() {
 
               {/* Social Icons */}
               <div className="flex space-x-6">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                {/* <a href="#" className="text-gray-400 hover:text-white transition-colors">
                   <Facebook className="h-6 w-6" />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                </a> */}
+                <a href="https://www.instagram.com/bludgers.52" className="text-gray-400 hover:text-white transition-colors">
                   <Instagram className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                {/* <a href="#" className="text-gray-400 hover:text-white transition-colors">
                   <Twitter className="h-6 w-6" />
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
