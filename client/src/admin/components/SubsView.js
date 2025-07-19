@@ -16,7 +16,7 @@ const SubsView = () => {
     const [durationUnit, setDurationUnit] = useState('days'); // Default to 'days'
 
     // You should use environment variables for these in a real application
-    const API_URL = "http://localhost:5000";
+    const API_URL = "https://numbr-exq6.onrender.com";
     const TOKEN = localStorage.getItem('token');
     const fetchPlans = async () => {
         setLoading(true);

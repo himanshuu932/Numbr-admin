@@ -34,7 +34,7 @@ function Admin() {
   const [errorAllData, setErrorAllData] = useState(null)
 
   // API base URL from environment variables
-  const API_URL = "http://localhost:5000"
+  const API_URL = "https://numbr-exq6.onrender.com"
 
   // --- IMPORTANT: AUTHENTICATION ---
   const authToken = localStorage.getItem("token")

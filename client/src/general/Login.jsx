@@ -5,7 +5,7 @@ export default function Login({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
- const API_URL = "http://localhost:5000";
+ const API_URL = "https://numbr-exq6.onrender.com";
 
   const handleSubmit =async (e) =>{
         e.preventDefault();
