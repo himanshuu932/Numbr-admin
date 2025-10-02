@@ -5,7 +5,7 @@ export default function Login({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
- const API_URL = "https://numbr-exq6.onrender.com";
+ const API_URL = "https://api.numbrapp.in";
 
   const handleSubmit =async (e) =>{
         e.preventDefault();

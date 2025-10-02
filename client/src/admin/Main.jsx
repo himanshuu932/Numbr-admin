@@ -34,7 +34,7 @@ function Admin() {
   const [errorAllData, setErrorAllData] = useState(null)
 
   // API base URL from environment variables
-  const API_URL = "https://numbr-exq6.onrender.com"
+  const API_URL = "https://api.numbrapp.in"
 
   // --- IMPORTANT: AUTHENTICATION ---
   const authToken = localStorage.getItem("token")
