@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { LayoutDashboard, Store, Users, Wallet } from "lucide-react"
+import { Toaster, toast } from "sonner"
 
 // Import components
 import DashboardView from "./components/DashboardView"
@@ -109,12 +110,12 @@ function Admin() {
         throw new Error(errorData.message || "Failed to verify shop.")
       }
 
-      alert("Shop verified successfully!")
+      toast.success("Shop verified successfully!")
       // Refresh all data to ensure UI is consistent
       fetchAllData()
     } catch (err) {
       console.error("Error verifying shop:", err)
-      alert(`Error: ${err.message}`)
+      toast.error(`Error: ${err.message}`)
     }
   }
 
@@ -145,7 +146,7 @@ function Admin() {
   // Callback function to handle selecting an owner for detail view
   const handleSelectOwner = (id) => {
     setSelectedOwnerId(id._id)
-    console.log("Selected Owner ID:",allOwners.find((o) => o._id === selectedOwnerId))
+    console.log("Selected Owner ID:", allOwners.find((o) => o._id === selectedOwnerId))
 
     setActiveView("ownerDetail");
   }
@@ -181,42 +182,38 @@ function Admin() {
             <nav className="flex items-center space-x-1">
               <button
                 onClick={() => setActiveView("dashboard")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  activeView === "dashboard"
-                    ? "bg-white text-black"
-                    : "text-gray-300 hover:text-white hover:bg-gray-800"
-                }`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeView === "dashboard"
+                  ? "bg-white text-black"
+                  : "text-gray-300 hover:text-white hover:bg-gray-800"
+                  }`}
               >
                 <LayoutDashboard size={16} />
                 Dashboard
               </button>
               <button
                 onClick={() => setActiveView("owners")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  activeView === "owners" || activeView === "ownerDetail"
-                    ? "bg-white text-black"
-                    : "text-gray-300 hover:text-white hover:bg-gray-800"
-                }`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeView === "owners" || activeView === "ownerDetail"
+                  ? "bg-white text-black"
+                  : "text-gray-300 hover:text-white hover:bg-gray-800"
+                  }`}
               >
                 <Store size={16} />
                 Owners
               </button>
               <button
                 onClick={() => setActiveView("users")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  activeView === "users" || activeView === "userDetail"
-                    ? "bg-white text-black"
-                    : "text-gray-300 hover:text-white hover:bg-gray-800"
-                }`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeView === "users" || activeView === "userDetail"
+                  ? "bg-white text-black"
+                  : "text-gray-300 hover:text-white hover:bg-gray-800"
+                  }`}
               >
                 <Users size={16} />
                 Users
               </button>
               <button
                 onClick={() => setActiveView("subs")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  activeView === "subs" ? "bg-white text-black" : "text-gray-300 hover:text-white hover:bg-gray-800"
-                }`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeView === "subs" ? "bg-white text-black" : "text-gray-300 hover:text-white hover:bg-gray-800"
+                  }`}
               >
                 <Wallet size={16} />
                 Subscription
@@ -255,6 +252,7 @@ function Admin() {
         {activeView === "privacy" && <PrivacyPolicy />}
         {activeView === "cancellation" && <CancellationRefundPolicy />}
       </main>
+      <Toaster position="top-right" richColors />
     </div>
   )
 }

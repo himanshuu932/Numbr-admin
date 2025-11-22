@@ -13,6 +13,21 @@ import {
   ShieldOff,
   MapPin,
 } from "lucide-react"
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+  LineChart,
+  Line,
+} from "recharts"
 
 const DashboardView = ({ allShops = [], allUsers = [], allSubscriptions = [], allOwners = [], onVerifyShop }) => {
   // Filter unverified shops from allShops list
@@ -178,41 +193,105 @@ const DashboardView = ({ allShops = [], allUsers = [], allSubscriptions = [], al
         </div>
       </div>
 
-      {/* Unverified Shops Section */}
-      {unverifiedShops.length > 0 && (
-        <div className="mb-8">
-          <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-800 mb-4">
-            <ShieldOff size={20} className="text-orange-600" />
-            Shops Awaiting Verification
-          </h3>
-          <div className="space-y-4">
-            {unverifiedShops.map((shop) => (
-              <div
-                key={shop._id}
-                className="bg-orange-50 border border-orange-200 rounded-lg p-4 flex items-center justify-between hover:bg-orange-100 transition-colors"
-              >
-                <div className="flex-1">
-                  <p className="font-semibold text-gray-800 text-lg">{shop.name}</p>
-                  <div className="flex items-center gap-1 text-gray-600 text-sm mt-1">
-                    <UserIcon size={14} />
-                    <span>Owner: {shop.owner?.name || "N/A"}</span>
-                  </div>
-                  <div className="flex items-center gap-1 text-gray-600 text-sm mt-1">
-                    <MapPin size={14} />
-                    <span>{shop.address?.fullDetails || "No address provided"}</span>
-                  </div>
-                </div>
-                <button
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
-                  onClick={() => onVerifyShop(shop._id)}
+
+
+      {/* Analytics Charts Section */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        {/* Subscription Distribution */}
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+          <h3 className="text-lg font-semibold text-gray-800 mb-4">Subscription Distribution</h3>
+          <div className="h-64">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={[
+                    { name: "Active", value: totalActiveSubscriptionsOverall },
+                    { name: "Trial", value: totalTrialShops + totalTrialUsers },
+                    { name: "Expired/None", value: totalExpiredShops + totalExpiredUsers },
+                  ]}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={60}
+                  outerRadius={80}
+                  fill="#8884d8"
+                  paddingAngle={5}
+                  dataKey="value"
                 >
-                  Verify Shop
-                </button>
-              </div>
-            ))}
+                  <Cell fill="#22c55e" />
+                  <Cell fill="#3b82f6" />
+                  <Cell fill="#ef4444" />
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
           </div>
         </div>
-      )}
+
+        {/* Revenue Trend (Mock Data) */}
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+          <h3 className="text-lg font-semibold text-gray-800 mb-4">Revenue Trend (Last 6 Months)</h3>
+          <div className="h-64">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart
+                data={[
+                  { name: "Jun", revenue: 4000 },
+                  { name: "Jul", revenue: 3000 },
+                  { name: "Aug", revenue: 2000 },
+                  { name: "Sep", revenue: 2780 },
+                  { name: "Oct", revenue: 1890 },
+                  { name: "Nov", revenue: overallMonthlyIncome || 2390 },
+                ]}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Line type="monotone" dataKey="revenue" stroke="#8884d8" activeDot={{ r: 8 }} />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+      </div>
+
+      {/* Unverified Shops Section */}
+      {
+        unverifiedShops.length > 0 && (
+          <div className="mb-8">
+            <h3 className="flex items-center gap-2 text-xl font-semibold text-gray-800 mb-4">
+              <ShieldOff size={20} className="text-orange-600" />
+              Shops Awaiting Verification
+            </h3>
+            <div className="space-y-4">
+              {unverifiedShops.map((shop) => (
+                <div
+                  key={shop._id}
+                  className="bg-orange-50 border border-orange-200 rounded-lg p-4 flex items-center justify-between hover:bg-orange-100 transition-colors"
+                >
+                  <div className="flex-1">
+                    <p className="font-semibold text-gray-800 text-lg">{shop.name}</p>
+                    <div className="flex items-center gap-1 text-gray-600 text-sm mt-1">
+                      <UserIcon size={14} />
+                      <span>Owner: {shop.owner?.name || "N/A"}</span>
+                    </div>
+                    <div className="flex items-center gap-1 text-gray-600 text-sm mt-1">
+                      <MapPin size={14} />
+                      <span>{shop.address?.fullDetails || "No address provided"}</span>
+                    </div>
+                  </div>
+                  <button
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                    onClick={() => onVerifyShop(shop._id)}
+                  >
+                    Verify Shop
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      }
 
       {/* Owners Breakdown Section */}
       <div className="mb-8">
@@ -314,7 +393,7 @@ const DashboardView = ({ allShops = [], allUsers = [], allSubscriptions = [], al
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 

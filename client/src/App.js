@@ -30,9 +30,7 @@ function App() {
 
   return (
     <Router>
-      <Routes>
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
-      </Routes>
+
 
       {activeView === 'admin' ? (
         isAuthenticated ? (
